@@ -4649,9 +4649,9 @@ void LCD_clearScreen(void)
     1e88:	08 95       	ret
 
 00001e8a <main>:
+#include "spi.h"
+#include "TC72.h"
 #include "util/delay.h"
-
-
 
 int main(void)
 {
@@ -4667,7 +4667,7 @@ int main(void)
     1e9c:	cd bf       	out	0x3d, r28	; 61
 	SPI_initMaster();
     1e9e:	0e 94 4c 10 	call	0x2098	; 0x2098 <SPI_initMaster>
-	TC72_Init(CONTINUES_MODE);
+	TC72_Init(CONTINUOUS_MODE);
     1ea2:	84 e0       	ldi	r24, 0x04	; 4
     1ea4:	0e 94 b4 05 	call	0xb68	; 0xb68 <TC72_Init>
 	LCD_init();
@@ -4678,7 +4678,6 @@ int main(void)
     1eb0:	0e 94 02 10 	call	0x2004	; 0x2004 <SetPollingTime>
 	while(1)
 	{
-
 		Poll();
     1eb4:	0e 94 cf 0f 	call	0x1f9e	; 0x1f9e <Poll>
     1eb8:	80 e0       	ldi	r24, 0x00	; 0
