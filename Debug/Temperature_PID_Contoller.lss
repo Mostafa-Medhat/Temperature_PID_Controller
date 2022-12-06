@@ -3,33 +3,33 @@ Temperature_PID_Contoller.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000023ce  00000000  00000000  00000094  2**1
+  0 .text         0000232e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000034  00800060  000023ce  00002462  2**0
+  1 .data         00000034  00800060  0000232e  000023c2  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000003  00800094  00800094  00002496  2**0
+  2 .bss          00000003  00800094  00800094  000023f6  2**0
                   ALLOC
-  3 .stab         00002640  00000000  00000000  00002498  2**2
+  3 .stab         000025ec  00000000  00000000  000023f8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  4 .stabstr      00001003  00000000  00000000  00004ad8  2**0
+  4 .stabstr      00001053  00000000  00000000  000049e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_aranges 00000140  00000000  00000000  00005adb  2**0
+  5 .debug_aranges 00000140  00000000  00000000  00005a37  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_pubnames 00000170  00000000  00000000  00005c1b  2**0
+  6 .debug_pubnames 00000170  00000000  00000000  00005b77  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   00001c49  00000000  00000000  00005d8b  2**0
+  7 .debug_info   00001c49  00000000  00000000  00005ce7  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00000eeb  00000000  00000000  000079d4  2**0
+  8 .debug_abbrev 00000eeb  00000000  00000000  00007930  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   00000dad  00000000  00000000  000088bf  2**0
+  9 .debug_line   00000dad  00000000  00000000  0000881b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00000160  00000000  00000000  0000966c  2**2
+ 10 .debug_frame  00000160  00000000  00000000  000095c8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    0000028d  00000000  00000000  000097cc  2**0
+ 11 .debug_str    0000028d  00000000  00000000  00009728  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    000007ce  00000000  00000000  00009a59  2**0
+ 12 .debug_loc    000007ce  00000000  00000000  000099b5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00000050  00000000  00000000  0000a227  2**0
+ 13 .debug_ranges 00000050  00000000  00000000  0000a183  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -38,7 +38,7 @@ Disassembly of section .text:
        0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
        4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
        8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
-       c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+       c:	0c 94 74 0f 	jmp	0x1ee8	; 0x1ee8 <__vector_3>
       10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
       18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
@@ -69,7 +69,7 @@ Disassembly of section .text:
       60:	10 e0       	ldi	r17, 0x00	; 0
       62:	a0 e6       	ldi	r26, 0x60	; 96
       64:	b0 e0       	ldi	r27, 0x00	; 0
-      66:	ee ec       	ldi	r30, 0xCE	; 206
+      66:	ee e2       	ldi	r30, 0x2E	; 46
       68:	f3 e2       	ldi	r31, 0x23	; 35
       6a:	02 c0       	rjmp	.+4      	; 0x70 <.do_copy_data_start>
 
@@ -96,7 +96,7 @@ Disassembly of section .text:
       82:	b1 07       	cpc	r27, r17
       84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
       86:	0e 94 61 0f 	call	0x1ec2	; 0x1ec2 <main>
-      8a:	0c 94 e5 11 	jmp	0x23ca	; 0x23ca <_exit>
+      8a:	0c 94 95 11 	jmp	0x232a	; 0x232a <_exit>
 
 0000008e <__bad_interrupt>:
       8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -148,7 +148,7 @@ Disassembly of section .text:
       ec:	b0 e0       	ldi	r27, 0x00	; 0
       ee:	eb e7       	ldi	r30, 0x7B	; 123
       f0:	f0 e0       	ldi	r31, 0x00	; 0
-      f2:	0c 94 7d 11 	jmp	0x22fa	; 0x22fa <__prologue_saves__>
+      f2:	0c 94 2d 11 	jmp	0x225a	; 0x225a <__prologue_saves__>
       f6:	dc 01       	movw	r26, r24
       f8:	2b 01       	movw	r4, r22
       fa:	fa 01       	movw	r30, r20
@@ -473,14 +473,14 @@ Disassembly of section .text:
      378:	cd b7       	in	r28, 0x3d	; 61
      37a:	de b7       	in	r29, 0x3e	; 62
      37c:	e2 e1       	ldi	r30, 0x12	; 18
-     37e:	0c 94 99 11 	jmp	0x2332	; 0x2332 <__epilogue_restores__>
+     37e:	0c 94 49 11 	jmp	0x2292	; 0x2292 <__epilogue_restores__>
 
 00000382 <__subsf3>:
      382:	a0 e2       	ldi	r26, 0x20	; 32
      384:	b0 e0       	ldi	r27, 0x00	; 0
      386:	e7 ec       	ldi	r30, 0xC7	; 199
      388:	f1 e0       	ldi	r31, 0x01	; 1
-     38a:	0c 94 89 11 	jmp	0x2312	; 0x2312 <__prologue_saves__+0x18>
+     38a:	0c 94 39 11 	jmp	0x2272	; 0x2272 <__prologue_saves__+0x18>
      38e:	69 83       	std	Y+1, r22	; 0x01
      390:	7a 83       	std	Y+2, r23	; 0x02
      392:	8b 83       	std	Y+3, r24	; 0x03
@@ -518,14 +518,14 @@ Disassembly of section .text:
      3d8:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__pack_f>
      3dc:	a0 96       	adiw	r28, 0x20	; 32
      3de:	e6 e0       	ldi	r30, 0x06	; 6
-     3e0:	0c 94 a5 11 	jmp	0x234a	; 0x234a <__epilogue_restores__+0x18>
+     3e0:	0c 94 55 11 	jmp	0x22aa	; 0x22aa <__epilogue_restores__+0x18>
 
 000003e4 <__addsf3>:
      3e4:	a0 e2       	ldi	r26, 0x20	; 32
      3e6:	b0 e0       	ldi	r27, 0x00	; 0
      3e8:	e8 ef       	ldi	r30, 0xF8	; 248
      3ea:	f1 e0       	ldi	r31, 0x01	; 1
-     3ec:	0c 94 89 11 	jmp	0x2312	; 0x2312 <__prologue_saves__+0x18>
+     3ec:	0c 94 39 11 	jmp	0x2272	; 0x2272 <__prologue_saves__+0x18>
      3f0:	69 83       	std	Y+1, r22	; 0x01
      3f2:	7a 83       	std	Y+2, r23	; 0x02
      3f4:	8b 83       	std	Y+3, r24	; 0x03
@@ -559,14 +559,14 @@ Disassembly of section .text:
      432:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__pack_f>
      436:	a0 96       	adiw	r28, 0x20	; 32
      438:	e6 e0       	ldi	r30, 0x06	; 6
-     43a:	0c 94 a5 11 	jmp	0x234a	; 0x234a <__epilogue_restores__+0x18>
+     43a:	0c 94 55 11 	jmp	0x22aa	; 0x22aa <__epilogue_restores__+0x18>
 
 0000043e <__mulsf3>:
      43e:	a0 e2       	ldi	r26, 0x20	; 32
      440:	b0 e0       	ldi	r27, 0x00	; 0
      442:	e5 e2       	ldi	r30, 0x25	; 37
      444:	f2 e0       	ldi	r31, 0x02	; 2
-     446:	0c 94 7d 11 	jmp	0x22fa	; 0x22fa <__prologue_saves__>
+     446:	0c 94 2d 11 	jmp	0x225a	; 0x225a <__prologue_saves__>
      44a:	69 83       	std	Y+1, r22	; 0x01
      44c:	7a 83       	std	Y+2, r23	; 0x02
      44e:	8b 83       	std	Y+3, r24	; 0x03
@@ -806,14 +806,14 @@ Disassembly of section .text:
      626:	0e 94 fd 03 	call	0x7fa	; 0x7fa <__pack_f>
      62a:	a0 96       	adiw	r28, 0x20	; 32
      62c:	e2 e1       	ldi	r30, 0x12	; 18
-     62e:	0c 94 99 11 	jmp	0x2332	; 0x2332 <__epilogue_restores__>
+     62e:	0c 94 49 11 	jmp	0x2292	; 0x2292 <__epilogue_restores__>
 
 00000632 <__gtsf2>:
      632:	a8 e1       	ldi	r26, 0x18	; 24
      634:	b0 e0       	ldi	r27, 0x00	; 0
      636:	ef e1       	ldi	r30, 0x1F	; 31
      638:	f3 e0       	ldi	r31, 0x03	; 3
-     63a:	0c 94 89 11 	jmp	0x2312	; 0x2312 <__prologue_saves__+0x18>
+     63a:	0c 94 39 11 	jmp	0x2272	; 0x2272 <__prologue_saves__+0x18>
      63e:	69 83       	std	Y+1, r22	; 0x01
      640:	7a 83       	std	Y+2, r23	; 0x02
      642:	8b 83       	std	Y+3, r24	; 0x03
@@ -851,14 +851,14 @@ Disassembly of section .text:
      688:	8f ef       	ldi	r24, 0xFF	; 255
      68a:	68 96       	adiw	r28, 0x18	; 24
      68c:	e6 e0       	ldi	r30, 0x06	; 6
-     68e:	0c 94 a5 11 	jmp	0x234a	; 0x234a <__epilogue_restores__+0x18>
+     68e:	0c 94 55 11 	jmp	0x22aa	; 0x22aa <__epilogue_restores__+0x18>
 
 00000692 <__gesf2>:
      692:	a8 e1       	ldi	r26, 0x18	; 24
      694:	b0 e0       	ldi	r27, 0x00	; 0
      696:	ef e4       	ldi	r30, 0x4F	; 79
      698:	f3 e0       	ldi	r31, 0x03	; 3
-     69a:	0c 94 89 11 	jmp	0x2312	; 0x2312 <__prologue_saves__+0x18>
+     69a:	0c 94 39 11 	jmp	0x2272	; 0x2272 <__prologue_saves__+0x18>
      69e:	69 83       	std	Y+1, r22	; 0x01
      6a0:	7a 83       	std	Y+2, r23	; 0x02
      6a2:	8b 83       	std	Y+3, r24	; 0x03
@@ -896,14 +896,14 @@ Disassembly of section .text:
      6e8:	8f ef       	ldi	r24, 0xFF	; 255
      6ea:	68 96       	adiw	r28, 0x18	; 24
      6ec:	e6 e0       	ldi	r30, 0x06	; 6
-     6ee:	0c 94 a5 11 	jmp	0x234a	; 0x234a <__epilogue_restores__+0x18>
+     6ee:	0c 94 55 11 	jmp	0x22aa	; 0x22aa <__epilogue_restores__+0x18>
 
 000006f2 <__ltsf2>:
      6f2:	a8 e1       	ldi	r26, 0x18	; 24
      6f4:	b0 e0       	ldi	r27, 0x00	; 0
      6f6:	ef e7       	ldi	r30, 0x7F	; 127
      6f8:	f3 e0       	ldi	r31, 0x03	; 3
-     6fa:	0c 94 89 11 	jmp	0x2312	; 0x2312 <__prologue_saves__+0x18>
+     6fa:	0c 94 39 11 	jmp	0x2272	; 0x2272 <__prologue_saves__+0x18>
      6fe:	69 83       	std	Y+1, r22	; 0x01
      700:	7a 83       	std	Y+2, r23	; 0x02
      702:	8b 83       	std	Y+3, r24	; 0x03
@@ -941,14 +941,14 @@ Disassembly of section .text:
      748:	81 e0       	ldi	r24, 0x01	; 1
      74a:	68 96       	adiw	r28, 0x18	; 24
      74c:	e6 e0       	ldi	r30, 0x06	; 6
-     74e:	0c 94 a5 11 	jmp	0x234a	; 0x234a <__epilogue_restores__+0x18>
+     74e:	0c 94 55 11 	jmp	0x22aa	; 0x22aa <__epilogue_restores__+0x18>
 
 00000752 <__fixsfsi>:
      752:	ac e0       	ldi	r26, 0x0C	; 12
      754:	b0 e0       	ldi	r27, 0x00	; 0
      756:	ef ea       	ldi	r30, 0xAF	; 175
      758:	f3 e0       	ldi	r31, 0x03	; 3
-     75a:	0c 94 8d 11 	jmp	0x231a	; 0x231a <__prologue_saves__+0x20>
+     75a:	0c 94 3d 11 	jmp	0x227a	; 0x227a <__prologue_saves__+0x20>
      75e:	69 83       	std	Y+1, r22	; 0x01
      760:	7a 83       	std	Y+2, r23	; 0x02
      762:	8b 83       	std	Y+3, r24	; 0x03
@@ -1024,7 +1024,7 @@ Disassembly of section .text:
      7f0:	ca 01       	movw	r24, r20
      7f2:	2c 96       	adiw	r28, 0x0c	; 12
      7f4:	e2 e0       	ldi	r30, 0x02	; 2
-     7f6:	0c 94 a9 11 	jmp	0x2352	; 0x2352 <__epilogue_restores__+0x20>
+     7f6:	0c 94 59 11 	jmp	0x22b2	; 0x22b2 <__epilogue_restores__+0x20>
 
 000007fa <__pack_f>:
      7fa:	df 92       	push	r13
@@ -1500,10 +1500,10 @@ void TC72_Init(unsigned char  mode)
      b7a:	0e 94 fd 06 	call	0xdfa	; 0xdfa <GPIO_writePin>
 	SPI_sendReceiveByte(0x80);
      b7e:	80 e8       	ldi	r24, 0x80	; 128
-     b80:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
+     b80:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
 	SPI_sendReceiveByte(mode);
      b84:	89 81       	ldd	r24, Y+1	; 0x01
-     b86:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
+     b86:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
 	GPIO_writePin(PORTB_ID, PIN4_ID, LOGIC_LOW);
      b8a:	81 e0       	ldi	r24, 0x01	; 1
      b8c:	64 e0       	ldi	r22, 0x04	; 4
@@ -1532,10 +1532,10 @@ unsigned char TC72_ReadTemp(void)
      bac:	0e 94 fd 06 	call	0xdfa	; 0xdfa <GPIO_writePin>
 	SPI_sendReceiveByte(0x02);
      bb0:	82 e0       	ldi	r24, 0x02	; 2
-     bb2:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
+     bb2:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
 	data = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
      bb6:	8f ef       	ldi	r24, 0xFF	; 255
-     bb8:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
+     bb8:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
      bbc:	89 83       	std	Y+1, r24	; 0x01
 	GPIO_writePin(PORTB_ID, PIN4_ID, LOGIC_LOW);
      bbe:	81 e0       	ldi	r24, 0x01	; 1
@@ -4659,7 +4659,7 @@ void LCD_intgerToString(int data)
     1e8a:	b9 01       	movw	r22, r18
     1e8c:	4a e0       	ldi	r20, 0x0A	; 10
     1e8e:	50 e0       	ldi	r21, 0x00	; 0
-    1e90:	0e 94 b4 11 	call	0x2368	; 0x2368 <itoa>
+    1e90:	0e 94 64 11 	call	0x22c8	; 0x22c8 <itoa>
    LCD_displayString(buff); /* Display the string */
     1e94:	ce 01       	movw	r24, r28
     1e96:	01 96       	adiw	r24, 0x01	; 1
@@ -4695,9 +4695,9 @@ void LCD_clearScreen(void)
     1ec0:	08 95       	ret
 
 00001ec2 <main>:
-#include "TC72.h"
 #include "TimerCompareMode.h"
-#include "util/delay.h"
+#include <avr/interrupt.h>
+
 
 int main(void)
 {
@@ -4705,857 +4705,761 @@ int main(void)
     1ec4:	cf 93       	push	r28
     1ec6:	cd b7       	in	r28, 0x3d	; 61
     1ec8:	de b7       	in	r29, 0x3e	; 62
-    1eca:	2e 97       	sbiw	r28, 0x0e	; 14
-    1ecc:	0f b6       	in	r0, 0x3f	; 63
-    1ece:	f8 94       	cli
-    1ed0:	de bf       	out	0x3e, r29	; 62
-    1ed2:	0f be       	out	0x3f, r0	; 63
-    1ed4:	cd bf       	out	0x3d, r28	; 61
 	SPI_initMaster();
-    1ed6:	0e 94 83 10 	call	0x2106	; 0x2106 <SPI_initMaster>
+    1eca:	0e 94 33 10 	call	0x2066	; 0x2066 <SPI_initMaster>
 	TC72_Init(CONTINUOUS_MODE);
-    1eda:	84 e0       	ldi	r24, 0x04	; 4
-    1edc:	0e 94 b4 05 	call	0xb68	; 0xb68 <TC72_Init>
+    1ece:	84 e0       	ldi	r24, 0x04	; 4
+    1ed0:	0e 94 b4 05 	call	0xb68	; 0xb68 <TC72_Init>
 	LCD_init();
-    1ee0:	0e 94 a5 0a 	call	0x154a	; 0x154a <LCD_init>
+    1ed4:	0e 94 a5 0a 	call	0x154a	; 0x154a <LCD_init>
 	SetPollingTime(500);
-    1ee4:	84 ef       	ldi	r24, 0xF4	; 244
-    1ee6:	91 e0       	ldi	r25, 0x01	; 1
-    1ee8:	0e 94 39 10 	call	0x2072	; 0x2072 <SetPollingTime>
+    1ed8:	84 ef       	ldi	r24, 0xF4	; 244
+    1eda:	91 e0       	ldi	r25, 0x01	; 1
+    1edc:	0e 94 e9 0f 	call	0x1fd2	; 0x1fd2 <SetPollingTime>
 	Timer2_Init_CTC_Mode(250);
-    1eec:	8a ef       	ldi	r24, 0xFA	; 250
-    1eee:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <Timer2_Init_CTC_Mode>
-	while(1)
-	{
-		Poll();
-    1ef2:	0e 94 ee 0f 	call	0x1fdc	; 0x1fdc <Poll>
-    1ef6:	80 e0       	ldi	r24, 0x00	; 0
-    1ef8:	90 e0       	ldi	r25, 0x00	; 0
-    1efa:	aa ef       	ldi	r26, 0xFA	; 250
-    1efc:	b3 e4       	ldi	r27, 0x43	; 67
-    1efe:	8b 87       	std	Y+11, r24	; 0x0b
-    1f00:	9c 87       	std	Y+12, r25	; 0x0c
-    1f02:	ad 87       	std	Y+13, r26	; 0x0d
-    1f04:	be 87       	std	Y+14, r27	; 0x0e
- */
-void
-_delay_ms(double __ms)
-{
-	uint16_t __ticks;
-	double __tmp = ((F_CPU) / 4e3) * __ms;
-    1f06:	6b 85       	ldd	r22, Y+11	; 0x0b
-    1f08:	7c 85       	ldd	r23, Y+12	; 0x0c
-    1f0a:	8d 85       	ldd	r24, Y+13	; 0x0d
-    1f0c:	9e 85       	ldd	r25, Y+14	; 0x0e
-    1f0e:	20 e0       	ldi	r18, 0x00	; 0
-    1f10:	30 e0       	ldi	r19, 0x00	; 0
-    1f12:	4a e7       	ldi	r20, 0x7A	; 122
-    1f14:	53 e4       	ldi	r21, 0x43	; 67
-    1f16:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    1f1a:	dc 01       	movw	r26, r24
-    1f1c:	cb 01       	movw	r24, r22
-    1f1e:	8f 83       	std	Y+7, r24	; 0x07
-    1f20:	98 87       	std	Y+8, r25	; 0x08
-    1f22:	a9 87       	std	Y+9, r26	; 0x09
-    1f24:	ba 87       	std	Y+10, r27	; 0x0a
-	if (__tmp < 1.0)
-    1f26:	6f 81       	ldd	r22, Y+7	; 0x07
-    1f28:	78 85       	ldd	r23, Y+8	; 0x08
-    1f2a:	89 85       	ldd	r24, Y+9	; 0x09
-    1f2c:	9a 85       	ldd	r25, Y+10	; 0x0a
-    1f2e:	20 e0       	ldi	r18, 0x00	; 0
-    1f30:	30 e0       	ldi	r19, 0x00	; 0
-    1f32:	40 e8       	ldi	r20, 0x80	; 128
-    1f34:	5f e3       	ldi	r21, 0x3F	; 63
-    1f36:	0e 94 79 03 	call	0x6f2	; 0x6f2 <__ltsf2>
-    1f3a:	88 23       	and	r24, r24
-    1f3c:	2c f4       	brge	.+10     	; 0x1f48 <main+0x86>
-		__ticks = 1;
-    1f3e:	81 e0       	ldi	r24, 0x01	; 1
-    1f40:	90 e0       	ldi	r25, 0x00	; 0
-    1f42:	9e 83       	std	Y+6, r25	; 0x06
-    1f44:	8d 83       	std	Y+5, r24	; 0x05
-    1f46:	3f c0       	rjmp	.+126    	; 0x1fc6 <main+0x104>
-	else if (__tmp > 65535)
-    1f48:	6f 81       	ldd	r22, Y+7	; 0x07
-    1f4a:	78 85       	ldd	r23, Y+8	; 0x08
-    1f4c:	89 85       	ldd	r24, Y+9	; 0x09
-    1f4e:	9a 85       	ldd	r25, Y+10	; 0x0a
-    1f50:	20 e0       	ldi	r18, 0x00	; 0
-    1f52:	3f ef       	ldi	r19, 0xFF	; 255
-    1f54:	4f e7       	ldi	r20, 0x7F	; 127
-    1f56:	57 e4       	ldi	r21, 0x47	; 71
-    1f58:	0e 94 19 03 	call	0x632	; 0x632 <__gtsf2>
-    1f5c:	18 16       	cp	r1, r24
-    1f5e:	4c f5       	brge	.+82     	; 0x1fb2 <main+0xf0>
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-    1f60:	6b 85       	ldd	r22, Y+11	; 0x0b
-    1f62:	7c 85       	ldd	r23, Y+12	; 0x0c
-    1f64:	8d 85       	ldd	r24, Y+13	; 0x0d
-    1f66:	9e 85       	ldd	r25, Y+14	; 0x0e
-    1f68:	20 e0       	ldi	r18, 0x00	; 0
-    1f6a:	30 e0       	ldi	r19, 0x00	; 0
-    1f6c:	40 e2       	ldi	r20, 0x20	; 32
-    1f6e:	51 e4       	ldi	r21, 0x41	; 65
-    1f70:	0e 94 1f 02 	call	0x43e	; 0x43e <__mulsf3>
-    1f74:	dc 01       	movw	r26, r24
-    1f76:	cb 01       	movw	r24, r22
-    1f78:	bc 01       	movw	r22, r24
-    1f7a:	cd 01       	movw	r24, r26
-    1f7c:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    1f80:	dc 01       	movw	r26, r24
-    1f82:	cb 01       	movw	r24, r22
-    1f84:	9e 83       	std	Y+6, r25	; 0x06
-    1f86:	8d 83       	std	Y+5, r24	; 0x05
-    1f88:	0f c0       	rjmp	.+30     	; 0x1fa8 <main+0xe6>
-    1f8a:	89 e1       	ldi	r24, 0x19	; 25
-    1f8c:	90 e0       	ldi	r25, 0x00	; 0
-    1f8e:	9c 83       	std	Y+4, r25	; 0x04
-    1f90:	8b 83       	std	Y+3, r24	; 0x03
-    1f92:	8b 81       	ldd	r24, Y+3	; 0x03
-    1f94:	9c 81       	ldd	r25, Y+4	; 0x04
-    1f96:	01 97       	sbiw	r24, 0x01	; 1
-    1f98:	f1 f7       	brne	.-4      	; 0x1f96 <main+0xd4>
-    1f9a:	9c 83       	std	Y+4, r25	; 0x04
-    1f9c:	8b 83       	std	Y+3, r24	; 0x03
-		while(__ticks)
-		{
-			// wait 1/10 ms
-			_delay_loop_2(((F_CPU) / 4e3) / 10);
-			__ticks --;
-    1f9e:	8d 81       	ldd	r24, Y+5	; 0x05
-    1fa0:	9e 81       	ldd	r25, Y+6	; 0x06
-    1fa2:	01 97       	sbiw	r24, 0x01	; 1
-    1fa4:	9e 83       	std	Y+6, r25	; 0x06
-    1fa6:	8d 83       	std	Y+5, r24	; 0x05
-		__ticks = 1;
-	else if (__tmp > 65535)
-	{
-		//	__ticks = requested delay in 1/10 ms
-		__ticks = (uint16_t) (__ms * 10.0);
-		while(__ticks)
-    1fa8:	8d 81       	ldd	r24, Y+5	; 0x05
-    1faa:	9e 81       	ldd	r25, Y+6	; 0x06
-    1fac:	00 97       	sbiw	r24, 0x00	; 0
-    1fae:	69 f7       	brne	.-38     	; 0x1f8a <main+0xc8>
-    1fb0:	a0 cf       	rjmp	.-192    	; 0x1ef2 <main+0x30>
-			__ticks --;
-		}
-		return;
-	}
-	else
-		__ticks = (uint16_t)__tmp;
-    1fb2:	6f 81       	ldd	r22, Y+7	; 0x07
-    1fb4:	78 85       	ldd	r23, Y+8	; 0x08
-    1fb6:	89 85       	ldd	r24, Y+9	; 0x09
-    1fb8:	9a 85       	ldd	r25, Y+10	; 0x0a
-    1fba:	0e 94 49 00 	call	0x92	; 0x92 <__fixunssfsi>
-    1fbe:	dc 01       	movw	r26, r24
-    1fc0:	cb 01       	movw	r24, r22
-    1fc2:	9e 83       	std	Y+6, r25	; 0x06
-    1fc4:	8d 83       	std	Y+5, r24	; 0x05
-    1fc6:	8d 81       	ldd	r24, Y+5	; 0x05
-    1fc8:	9e 81       	ldd	r25, Y+6	; 0x06
-    1fca:	9a 83       	std	Y+2, r25	; 0x02
-    1fcc:	89 83       	std	Y+1, r24	; 0x01
-    1fce:	89 81       	ldd	r24, Y+1	; 0x01
-    1fd0:	9a 81       	ldd	r25, Y+2	; 0x02
-    1fd2:	01 97       	sbiw	r24, 0x01	; 1
-    1fd4:	f1 f7       	brne	.-4      	; 0x1fd2 <main+0x110>
-    1fd6:	9a 83       	std	Y+2, r25	; 0x02
-    1fd8:	89 83       	std	Y+1, r24	; 0x01
-    1fda:	8b cf       	rjmp	.-234    	; 0x1ef2 <main+0x30>
+    1ee0:	8a ef       	ldi	r24, 0xFA	; 250
+    1ee2:	0e 94 e9 05 	call	0xbd2	; 0xbd2 <Timer2_Init_CTC_Mode>
+    1ee6:	ff cf       	rjmp	.-2      	; 0x1ee6 <main+0x24>
 
-00001fdc <Poll>:
+00001ee8 <__vector_3>:
+
+	}
+}
+
+ISR(TIMER2_COMP_vect)
+{
+    1ee8:	1f 92       	push	r1
+    1eea:	0f 92       	push	r0
+    1eec:	0f b6       	in	r0, 0x3f	; 63
+    1eee:	0f 92       	push	r0
+    1ef0:	11 24       	eor	r1, r1
+    1ef2:	2f 93       	push	r18
+    1ef4:	3f 93       	push	r19
+    1ef6:	4f 93       	push	r20
+    1ef8:	5f 93       	push	r21
+    1efa:	6f 93       	push	r22
+    1efc:	7f 93       	push	r23
+    1efe:	8f 93       	push	r24
+    1f00:	9f 93       	push	r25
+    1f02:	af 93       	push	r26
+    1f04:	bf 93       	push	r27
+    1f06:	ef 93       	push	r30
+    1f08:	ff 93       	push	r31
+    1f0a:	df 93       	push	r29
+    1f0c:	cf 93       	push	r28
+    1f0e:	cd b7       	in	r28, 0x3d	; 61
+    1f10:	de b7       	in	r29, 0x3e	; 62
+	Poll();
+    1f12:	0e 94 9e 0f 	call	0x1f3c	; 0x1f3c <Poll>
+}
+    1f16:	cf 91       	pop	r28
+    1f18:	df 91       	pop	r29
+    1f1a:	ff 91       	pop	r31
+    1f1c:	ef 91       	pop	r30
+    1f1e:	bf 91       	pop	r27
+    1f20:	af 91       	pop	r26
+    1f22:	9f 91       	pop	r25
+    1f24:	8f 91       	pop	r24
+    1f26:	7f 91       	pop	r23
+    1f28:	6f 91       	pop	r22
+    1f2a:	5f 91       	pop	r21
+    1f2c:	4f 91       	pop	r20
+    1f2e:	3f 91       	pop	r19
+    1f30:	2f 91       	pop	r18
+    1f32:	0f 90       	pop	r0
+    1f34:	0f be       	out	0x3f, r0	; 63
+    1f36:	0f 90       	pop	r0
+    1f38:	1f 90       	pop	r1
+    1f3a:	18 95       	reti
+
+00001f3c <Poll>:
 int polling_enabled= 1;
 int polling_counter= 1;
 int counter = 0 ;
 
 void Poll(void)
 {
-    1fdc:	df 93       	push	r29
-    1fde:	cf 93       	push	r28
-    1fe0:	0f 92       	push	r0
-    1fe2:	cd b7       	in	r28, 0x3d	; 61
-    1fe4:	de b7       	in	r29, 0x3e	; 62
+    1f3c:	df 93       	push	r29
+    1f3e:	cf 93       	push	r28
+    1f40:	0f 92       	push	r0
+    1f42:	cd b7       	in	r28, 0x3d	; 61
+    1f44:	de b7       	in	r29, 0x3e	; 62
 	if(polling_enabled && (!counter))
-    1fe6:	80 91 68 00 	lds	r24, 0x0068
-    1fea:	90 91 69 00 	lds	r25, 0x0069
-    1fee:	00 97       	sbiw	r24, 0x00	; 0
-    1ff0:	61 f0       	breq	.+24     	; 0x200a <Poll+0x2e>
-    1ff2:	80 91 94 00 	lds	r24, 0x0094
-    1ff6:	90 91 95 00 	lds	r25, 0x0095
-    1ffa:	00 97       	sbiw	r24, 0x00	; 0
-    1ffc:	31 f4       	brne	.+12     	; 0x200a <Poll+0x2e>
+    1f46:	80 91 68 00 	lds	r24, 0x0068
+    1f4a:	90 91 69 00 	lds	r25, 0x0069
+    1f4e:	00 97       	sbiw	r24, 0x00	; 0
+    1f50:	61 f0       	breq	.+24     	; 0x1f6a <Poll+0x2e>
+    1f52:	80 91 94 00 	lds	r24, 0x0094
+    1f56:	90 91 95 00 	lds	r25, 0x0095
+    1f5a:	00 97       	sbiw	r24, 0x00	; 0
+    1f5c:	31 f4       	brne	.+12     	; 0x1f6a <Poll+0x2e>
 	{
 		unsigned char data;
 		data = Get_Data();
-    1ffe:	0e 94 05 06 	call	0xc0a	; 0xc0a <Get_Data>
-    2002:	89 83       	std	Y+1, r24	; 0x01
+    1f5e:	0e 94 05 06 	call	0xc0a	; 0xc0a <Get_Data>
+    1f62:	89 83       	std	Y+1, r24	; 0x01
 		Handle_data(data);
-    2004:	89 81       	ldd	r24, Y+1	; 0x01
-    2006:	0e 94 a3 05 	call	0xb46	; 0xb46 <Handle_data>
+    1f64:	89 81       	ldd	r24, Y+1	; 0x01
+    1f66:	0e 94 a3 05 	call	0xb46	; 0xb46 <Handle_data>
 
 	}
 	counter++;
-    200a:	80 91 94 00 	lds	r24, 0x0094
-    200e:	90 91 95 00 	lds	r25, 0x0095
-    2012:	01 96       	adiw	r24, 0x01	; 1
-    2014:	90 93 95 00 	sts	0x0095, r25
-    2018:	80 93 94 00 	sts	0x0094, r24
+    1f6a:	80 91 94 00 	lds	r24, 0x0094
+    1f6e:	90 91 95 00 	lds	r25, 0x0095
+    1f72:	01 96       	adiw	r24, 0x01	; 1
+    1f74:	90 93 95 00 	sts	0x0095, r25
+    1f78:	80 93 94 00 	sts	0x0094, r24
 	counter = counter%polling_counter;
-    201c:	80 91 94 00 	lds	r24, 0x0094
-    2020:	90 91 95 00 	lds	r25, 0x0095
-    2024:	20 91 6a 00 	lds	r18, 0x006A
-    2028:	30 91 6b 00 	lds	r19, 0x006B
-    202c:	b9 01       	movw	r22, r18
-    202e:	0e 94 56 11 	call	0x22ac	; 0x22ac <__divmodhi4>
-    2032:	90 93 95 00 	sts	0x0095, r25
-    2036:	80 93 94 00 	sts	0x0094, r24
+    1f7c:	80 91 94 00 	lds	r24, 0x0094
+    1f80:	90 91 95 00 	lds	r25, 0x0095
+    1f84:	20 91 6a 00 	lds	r18, 0x006A
+    1f88:	30 91 6b 00 	lds	r19, 0x006B
+    1f8c:	b9 01       	movw	r22, r18
+    1f8e:	0e 94 06 11 	call	0x220c	; 0x220c <__divmodhi4>
+    1f92:	90 93 95 00 	sts	0x0095, r25
+    1f96:	80 93 94 00 	sts	0x0094, r24
 }
-    203a:	0f 90       	pop	r0
-    203c:	cf 91       	pop	r28
-    203e:	df 91       	pop	r29
-    2040:	08 95       	ret
+    1f9a:	0f 90       	pop	r0
+    1f9c:	cf 91       	pop	r28
+    1f9e:	df 91       	pop	r29
+    1fa0:	08 95       	ret
 
-00002042 <StartPolling>:
+00001fa2 <StartPolling>:
 
 void StartPolling(void)
 {
-    2042:	df 93       	push	r29
-    2044:	cf 93       	push	r28
-    2046:	cd b7       	in	r28, 0x3d	; 61
-    2048:	de b7       	in	r29, 0x3e	; 62
+    1fa2:	df 93       	push	r29
+    1fa4:	cf 93       	push	r28
+    1fa6:	cd b7       	in	r28, 0x3d	; 61
+    1fa8:	de b7       	in	r29, 0x3e	; 62
 	polling_enabled=1;
-    204a:	81 e0       	ldi	r24, 0x01	; 1
-    204c:	90 e0       	ldi	r25, 0x00	; 0
-    204e:	90 93 69 00 	sts	0x0069, r25
-    2052:	80 93 68 00 	sts	0x0068, r24
+    1faa:	81 e0       	ldi	r24, 0x01	; 1
+    1fac:	90 e0       	ldi	r25, 0x00	; 0
+    1fae:	90 93 69 00 	sts	0x0069, r25
+    1fb2:	80 93 68 00 	sts	0x0068, r24
 }
-    2056:	cf 91       	pop	r28
-    2058:	df 91       	pop	r29
-    205a:	08 95       	ret
+    1fb6:	cf 91       	pop	r28
+    1fb8:	df 91       	pop	r29
+    1fba:	08 95       	ret
 
-0000205c <StopPolling>:
+00001fbc <StopPolling>:
 
 void StopPolling(void)
 {
-    205c:	df 93       	push	r29
-    205e:	cf 93       	push	r28
-    2060:	cd b7       	in	r28, 0x3d	; 61
-    2062:	de b7       	in	r29, 0x3e	; 62
+    1fbc:	df 93       	push	r29
+    1fbe:	cf 93       	push	r28
+    1fc0:	cd b7       	in	r28, 0x3d	; 61
+    1fc2:	de b7       	in	r29, 0x3e	; 62
 	polling_enabled=0;
-    2064:	10 92 69 00 	sts	0x0069, r1
-    2068:	10 92 68 00 	sts	0x0068, r1
+    1fc4:	10 92 69 00 	sts	0x0069, r1
+    1fc8:	10 92 68 00 	sts	0x0068, r1
 }
-    206c:	cf 91       	pop	r28
-    206e:	df 91       	pop	r29
-    2070:	08 95       	ret
+    1fcc:	cf 91       	pop	r28
+    1fce:	df 91       	pop	r29
+    1fd0:	08 95       	ret
 
-00002072 <SetPollingTime>:
+00001fd2 <SetPollingTime>:
 
 void SetPollingTime(int polling_time)
 {
-    2072:	df 93       	push	r29
-    2074:	cf 93       	push	r28
-    2076:	00 d0       	rcall	.+0      	; 0x2078 <SetPollingTime+0x6>
-    2078:	cd b7       	in	r28, 0x3d	; 61
-    207a:	de b7       	in	r29, 0x3e	; 62
-    207c:	9a 83       	std	Y+2, r25	; 0x02
-    207e:	89 83       	std	Y+1, r24	; 0x01
+    1fd2:	df 93       	push	r29
+    1fd4:	cf 93       	push	r28
+    1fd6:	00 d0       	rcall	.+0      	; 0x1fd8 <SetPollingTime+0x6>
+    1fd8:	cd b7       	in	r28, 0x3d	; 61
+    1fda:	de b7       	in	r29, 0x3e	; 62
+    1fdc:	9a 83       	std	Y+2, r25	; 0x02
+    1fde:	89 83       	std	Y+1, r24	; 0x01
 	polling_counter = polling_time/250;
-    2080:	89 81       	ldd	r24, Y+1	; 0x01
-    2082:	9a 81       	ldd	r25, Y+2	; 0x02
-    2084:	2a ef       	ldi	r18, 0xFA	; 250
-    2086:	30 e0       	ldi	r19, 0x00	; 0
-    2088:	b9 01       	movw	r22, r18
-    208a:	0e 94 56 11 	call	0x22ac	; 0x22ac <__divmodhi4>
-    208e:	cb 01       	movw	r24, r22
-    2090:	90 93 6b 00 	sts	0x006B, r25
-    2094:	80 93 6a 00 	sts	0x006A, r24
+    1fe0:	89 81       	ldd	r24, Y+1	; 0x01
+    1fe2:	9a 81       	ldd	r25, Y+2	; 0x02
+    1fe4:	2a ef       	ldi	r18, 0xFA	; 250
+    1fe6:	30 e0       	ldi	r19, 0x00	; 0
+    1fe8:	b9 01       	movw	r22, r18
+    1fea:	0e 94 06 11 	call	0x220c	; 0x220c <__divmodhi4>
+    1fee:	cb 01       	movw	r24, r22
+    1ff0:	90 93 6b 00 	sts	0x006B, r25
+    1ff4:	80 93 6a 00 	sts	0x006A, r24
 }
-    2098:	0f 90       	pop	r0
-    209a:	0f 90       	pop	r0
-    209c:	cf 91       	pop	r28
-    209e:	df 91       	pop	r29
-    20a0:	08 95       	ret
+    1ff8:	0f 90       	pop	r0
+    1ffa:	0f 90       	pop	r0
+    1ffc:	cf 91       	pop	r28
+    1ffe:	df 91       	pop	r29
+    2000:	08 95       	ret
 
-000020a2 <PWM_Timer0_Start>:
+00002002 <PWM_Timer0_Start>:
 #include "gpio.h"
 #include "common_macros.h"
 #include <avr/io.h>
 
 void PWM_Timer0_Start(uint8_t duty_cycle)
 {
-    20a2:	df 93       	push	r29
-    20a4:	cf 93       	push	r28
-    20a6:	0f 92       	push	r0
-    20a8:	cd b7       	in	r28, 0x3d	; 61
-    20aa:	de b7       	in	r29, 0x3e	; 62
-    20ac:	89 83       	std	Y+1, r24	; 0x01
+    2002:	df 93       	push	r29
+    2004:	cf 93       	push	r28
+    2006:	0f 92       	push	r0
+    2008:	cd b7       	in	r28, 0x3d	; 61
+    200a:	de b7       	in	r29, 0x3e	; 62
+    200c:	89 83       	std	Y+1, r24	; 0x01
 	/*	The function responsible for trigger the Timer0 with the PWM Mode. */
 
 	TCNT0 = 0; //Set Timer Initial value
-    20ae:	e2 e5       	ldi	r30, 0x52	; 82
-    20b0:	f0 e0       	ldi	r31, 0x00	; 0
-    20b2:	10 82       	st	Z, r1
+    200e:	e2 e5       	ldi	r30, 0x52	; 82
+    2010:	f0 e0       	ldi	r31, 0x00	; 0
+    2012:	10 82       	st	Z, r1
 	OCR0 = duty_cycle; // Set Compare Value
-    20b4:	ec e5       	ldi	r30, 0x5C	; 92
-    20b6:	f0 e0       	ldi	r31, 0x00	; 0
-    20b8:	89 81       	ldd	r24, Y+1	; 0x01
-    20ba:	80 83       	st	Z, r24
+    2014:	ec e5       	ldi	r30, 0x5C	; 92
+    2016:	f0 e0       	ldi	r31, 0x00	; 0
+    2018:	89 81       	ldd	r24, Y+1	; 0x01
+    201a:	80 83       	st	Z, r24
 	GPIO_setupPinDirection(PWM_PORT_ID, PWM_PIN_ID, PIN_OUTPUT); //Setup the PWM pin as Output pin
-    20bc:	81 e0       	ldi	r24, 0x01	; 1
-    20be:	63 e0       	ldi	r22, 0x03	; 3
-    20c0:	41 e0       	ldi	r20, 0x01	; 1
-    20c2:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    201c:	81 e0       	ldi	r24, 0x01	; 1
+    201e:	63 e0       	ldi	r22, 0x03	; 3
+    2020:	41 e0       	ldi	r20, 0x01	; 1
+    2022:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	 * 1. Fast PWM mode FOC0=0
 	 * 2. Fast PWM Mode WGM01=1 & WGM00=1
 	 * 3. (non inverted mode) COM00=0 & COM01=1
 	 * 4. clock = F_CPU/8 = (500Hz) .. CS00=0 CS01=1 CS02=0
 	 */
 	SET_BIT(TCCR0,WGM00);
-    20c6:	a3 e5       	ldi	r26, 0x53	; 83
-    20c8:	b0 e0       	ldi	r27, 0x00	; 0
-    20ca:	e3 e5       	ldi	r30, 0x53	; 83
-    20cc:	f0 e0       	ldi	r31, 0x00	; 0
-    20ce:	80 81       	ld	r24, Z
-    20d0:	80 64       	ori	r24, 0x40	; 64
-    20d2:	8c 93       	st	X, r24
+    2026:	a3 e5       	ldi	r26, 0x53	; 83
+    2028:	b0 e0       	ldi	r27, 0x00	; 0
+    202a:	e3 e5       	ldi	r30, 0x53	; 83
+    202c:	f0 e0       	ldi	r31, 0x00	; 0
+    202e:	80 81       	ld	r24, Z
+    2030:	80 64       	ori	r24, 0x40	; 64
+    2032:	8c 93       	st	X, r24
 	SET_BIT(TCCR0,WGM01);
-    20d4:	a3 e5       	ldi	r26, 0x53	; 83
-    20d6:	b0 e0       	ldi	r27, 0x00	; 0
-    20d8:	e3 e5       	ldi	r30, 0x53	; 83
-    20da:	f0 e0       	ldi	r31, 0x00	; 0
-    20dc:	80 81       	ld	r24, Z
-    20de:	88 60       	ori	r24, 0x08	; 8
-    20e0:	8c 93       	st	X, r24
+    2034:	a3 e5       	ldi	r26, 0x53	; 83
+    2036:	b0 e0       	ldi	r27, 0x00	; 0
+    2038:	e3 e5       	ldi	r30, 0x53	; 83
+    203a:	f0 e0       	ldi	r31, 0x00	; 0
+    203c:	80 81       	ld	r24, Z
+    203e:	88 60       	ori	r24, 0x08	; 8
+    2040:	8c 93       	st	X, r24
 	SET_BIT(TCCR0,COM01);
-    20e2:	a3 e5       	ldi	r26, 0x53	; 83
-    20e4:	b0 e0       	ldi	r27, 0x00	; 0
-    20e6:	e3 e5       	ldi	r30, 0x53	; 83
-    20e8:	f0 e0       	ldi	r31, 0x00	; 0
-    20ea:	80 81       	ld	r24, Z
-    20ec:	80 62       	ori	r24, 0x20	; 32
-    20ee:	8c 93       	st	X, r24
+    2042:	a3 e5       	ldi	r26, 0x53	; 83
+    2044:	b0 e0       	ldi	r27, 0x00	; 0
+    2046:	e3 e5       	ldi	r30, 0x53	; 83
+    2048:	f0 e0       	ldi	r31, 0x00	; 0
+    204a:	80 81       	ld	r24, Z
+    204c:	80 62       	ori	r24, 0x20	; 32
+    204e:	8c 93       	st	X, r24
 	SET_BIT(TCCR0,CS01);
-    20f0:	a3 e5       	ldi	r26, 0x53	; 83
-    20f2:	b0 e0       	ldi	r27, 0x00	; 0
-    20f4:	e3 e5       	ldi	r30, 0x53	; 83
-    20f6:	f0 e0       	ldi	r31, 0x00	; 0
-    20f8:	80 81       	ld	r24, Z
-    20fa:	82 60       	ori	r24, 0x02	; 2
-    20fc:	8c 93       	st	X, r24
+    2050:	a3 e5       	ldi	r26, 0x53	; 83
+    2052:	b0 e0       	ldi	r27, 0x00	; 0
+    2054:	e3 e5       	ldi	r30, 0x53	; 83
+    2056:	f0 e0       	ldi	r31, 0x00	; 0
+    2058:	80 81       	ld	r24, Z
+    205a:	82 60       	ori	r24, 0x02	; 2
+    205c:	8c 93       	st	X, r24
 }
-    20fe:	0f 90       	pop	r0
-    2100:	cf 91       	pop	r28
-    2102:	df 91       	pop	r29
-    2104:	08 95       	ret
+    205e:	0f 90       	pop	r0
+    2060:	cf 91       	pop	r28
+    2062:	df 91       	pop	r29
+    2064:	08 95       	ret
 
-00002106 <SPI_initMaster>:
+00002066 <SPI_initMaster>:
 /*
  * Description :
  * Initialize the SPI device as Master.
  */
 void SPI_initMaster(void) 
 {
-    2106:	df 93       	push	r29
-    2108:	cf 93       	push	r28
-    210a:	cd b7       	in	r28, 0x3d	; 61
-    210c:	de b7       	in	r29, 0x3e	; 62
+    2066:	df 93       	push	r29
+    2068:	cf 93       	push	r28
+    206a:	cd b7       	in	r28, 0x3d	; 61
+    206c:	de b7       	in	r29, 0x3e	; 62
 	 * SS(PB4)   --> Output
 	 * MOSI(PB5) --> Output 
 	 * MISO(PB6) --> Input
 	 * SCK(PB7) --> Output
 	 ********************************************/
 	GPIO_setupPinDirection(PORTB_ID,PIN4_ID,PIN_OUTPUT);
-    210e:	81 e0       	ldi	r24, 0x01	; 1
-    2110:	64 e0       	ldi	r22, 0x04	; 4
-    2112:	41 e0       	ldi	r20, 0x01	; 1
-    2114:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    206e:	81 e0       	ldi	r24, 0x01	; 1
+    2070:	64 e0       	ldi	r22, 0x04	; 4
+    2072:	41 e0       	ldi	r20, 0x01	; 1
+    2074:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	GPIO_setupPinDirection(PORTB_ID,PIN5_ID,PIN_OUTPUT);
-    2118:	81 e0       	ldi	r24, 0x01	; 1
-    211a:	65 e0       	ldi	r22, 0x05	; 5
-    211c:	41 e0       	ldi	r20, 0x01	; 1
-    211e:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    2078:	81 e0       	ldi	r24, 0x01	; 1
+    207a:	65 e0       	ldi	r22, 0x05	; 5
+    207c:	41 e0       	ldi	r20, 0x01	; 1
+    207e:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	GPIO_setupPinDirection(PORTB_ID,PIN6_ID,PIN_INPUT);
-    2122:	81 e0       	ldi	r24, 0x01	; 1
-    2124:	66 e0       	ldi	r22, 0x06	; 6
-    2126:	40 e0       	ldi	r20, 0x00	; 0
-    2128:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    2082:	81 e0       	ldi	r24, 0x01	; 1
+    2084:	66 e0       	ldi	r22, 0x06	; 6
+    2086:	40 e0       	ldi	r20, 0x00	; 0
+    2088:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	GPIO_setupPinDirection(PORTB_ID,PIN7_ID,PIN_OUTPUT);
-    212c:	81 e0       	ldi	r24, 0x01	; 1
-    212e:	67 e0       	ldi	r22, 0x07	; 7
-    2130:	41 e0       	ldi	r20, 0x01	; 1
-    2132:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    208c:	81 e0       	ldi	r24, 0x01	; 1
+    208e:	67 e0       	ldi	r22, 0x07	; 7
+    2090:	41 e0       	ldi	r20, 0x01	; 1
+    2092:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
      * MSTR    = 1 Enable Master
      * CPOL    = 0 SCK is low when idle
      * CPHA    = 1 Sample Data with the falling edge
      * SPR1:0  = 00 Choose SPI clock = Fosc/4
      ***********************************************************************/
 	SPCR = (1<<SPE) | (1<<MSTR) | (1<<CPHA);
-    2136:	ed e2       	ldi	r30, 0x2D	; 45
-    2138:	f0 e0       	ldi	r31, 0x00	; 0
-    213a:	84 e5       	ldi	r24, 0x54	; 84
-    213c:	80 83       	st	Z, r24
+    2096:	ed e2       	ldi	r30, 0x2D	; 45
+    2098:	f0 e0       	ldi	r31, 0x00	; 0
+    209a:	84 e5       	ldi	r24, 0x54	; 84
+    209c:	80 83       	st	Z, r24
 
 	/* Clear the SPI2X bit in SPSR to Choose SPI clock = Fosc/4 */
 	SPSR &= ~(1<<SPI2X);
-    213e:	ae e2       	ldi	r26, 0x2E	; 46
-    2140:	b0 e0       	ldi	r27, 0x00	; 0
-    2142:	ee e2       	ldi	r30, 0x2E	; 46
-    2144:	f0 e0       	ldi	r31, 0x00	; 0
-    2146:	80 81       	ld	r24, Z
-    2148:	8e 7f       	andi	r24, 0xFE	; 254
-    214a:	8c 93       	st	X, r24
+    209e:	ae e2       	ldi	r26, 0x2E	; 46
+    20a0:	b0 e0       	ldi	r27, 0x00	; 0
+    20a2:	ee e2       	ldi	r30, 0x2E	; 46
+    20a4:	f0 e0       	ldi	r31, 0x00	; 0
+    20a6:	80 81       	ld	r24, Z
+    20a8:	8e 7f       	andi	r24, 0xFE	; 254
+    20aa:	8c 93       	st	X, r24
 //	SPSR |= (1<<SPR0);		//FOSC/16
 
 
 }
-    214c:	cf 91       	pop	r28
-    214e:	df 91       	pop	r29
-    2150:	08 95       	ret
+    20ac:	cf 91       	pop	r28
+    20ae:	df 91       	pop	r29
+    20b0:	08 95       	ret
 
-00002152 <SPI_initSlave>:
+000020b2 <SPI_initSlave>:
 /*
  * Description :
  * Initialize the SPI device as Slave.
  */
 void SPI_initSlave(void)
 { 
-    2152:	df 93       	push	r29
-    2154:	cf 93       	push	r28
-    2156:	cd b7       	in	r28, 0x3d	; 61
-    2158:	de b7       	in	r29, 0x3e	; 62
+    20b2:	df 93       	push	r29
+    20b4:	cf 93       	push	r28
+    20b6:	cd b7       	in	r28, 0x3d	; 61
+    20b8:	de b7       	in	r29, 0x3e	; 62
 	 * SS(PB4)   --> Input
 	 * MOSI(PB5) --> Input
 	 * MISO(PB6) --> Output
 	 * SCK(PB7) --> Input
 	 ********************************************/
 	GPIO_setupPinDirection(PORTB_ID,PIN4_ID,PIN_INPUT);
-    215a:	81 e0       	ldi	r24, 0x01	; 1
-    215c:	64 e0       	ldi	r22, 0x04	; 4
-    215e:	40 e0       	ldi	r20, 0x00	; 0
-    2160:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    20ba:	81 e0       	ldi	r24, 0x01	; 1
+    20bc:	64 e0       	ldi	r22, 0x04	; 4
+    20be:	40 e0       	ldi	r20, 0x00	; 0
+    20c0:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	GPIO_setupPinDirection(PORTB_ID,PIN5_ID,PIN_INPUT);
-    2164:	81 e0       	ldi	r24, 0x01	; 1
-    2166:	65 e0       	ldi	r22, 0x05	; 5
-    2168:	40 e0       	ldi	r20, 0x00	; 0
-    216a:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    20c4:	81 e0       	ldi	r24, 0x01	; 1
+    20c6:	65 e0       	ldi	r22, 0x05	; 5
+    20c8:	40 e0       	ldi	r20, 0x00	; 0
+    20ca:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	GPIO_setupPinDirection(PORTB_ID,PIN6_ID,PIN_OUTPUT);
-    216e:	81 e0       	ldi	r24, 0x01	; 1
-    2170:	66 e0       	ldi	r22, 0x06	; 6
-    2172:	41 e0       	ldi	r20, 0x01	; 1
-    2174:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    20ce:	81 e0       	ldi	r24, 0x01	; 1
+    20d0:	66 e0       	ldi	r22, 0x06	; 6
+    20d2:	41 e0       	ldi	r20, 0x01	; 1
+    20d4:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	GPIO_setupPinDirection(PORTB_ID,PIN7_ID,PIN_INPUT);
-    2178:	81 e0       	ldi	r24, 0x01	; 1
-    217a:	67 e0       	ldi	r22, 0x07	; 7
-    217c:	40 e0       	ldi	r20, 0x00	; 0
-    217e:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
+    20d8:	81 e0       	ldi	r24, 0x01	; 1
+    20da:	67 e0       	ldi	r22, 0x07	; 7
+    20dc:	40 e0       	ldi	r20, 0x00	; 0
+    20de:	0e 94 12 06 	call	0xc24	; 0xc24 <GPIO_setupPinDirection>
 	 * MSTR    = 0 Disable Master
 	 * CPOL    = 0 SCK is low when idle
 	 * CPHA    = 0 Sample Data with the raising edge
 	 * SPR1:0  = 00 Choose SPI clock = Fosc/4
 	 ***********************************************************************/
 	SPCR = (1<<SPE);
-    2182:	ed e2       	ldi	r30, 0x2D	; 45
-    2184:	f0 e0       	ldi	r31, 0x00	; 0
-    2186:	80 e4       	ldi	r24, 0x40	; 64
-    2188:	80 83       	st	Z, r24
+    20e2:	ed e2       	ldi	r30, 0x2D	; 45
+    20e4:	f0 e0       	ldi	r31, 0x00	; 0
+    20e6:	80 e4       	ldi	r24, 0x40	; 64
+    20e8:	80 83       	st	Z, r24
 
 	/* Clear the SPI2X bit in SPSR to Choose SPI clock = Fosc/4 */
 	SPSR &= ~(1<<SPI2X);
-    218a:	ae e2       	ldi	r26, 0x2E	; 46
-    218c:	b0 e0       	ldi	r27, 0x00	; 0
-    218e:	ee e2       	ldi	r30, 0x2E	; 46
-    2190:	f0 e0       	ldi	r31, 0x00	; 0
-    2192:	80 81       	ld	r24, Z
-    2194:	8e 7f       	andi	r24, 0xFE	; 254
-    2196:	8c 93       	st	X, r24
+    20ea:	ae e2       	ldi	r26, 0x2E	; 46
+    20ec:	b0 e0       	ldi	r27, 0x00	; 0
+    20ee:	ee e2       	ldi	r30, 0x2E	; 46
+    20f0:	f0 e0       	ldi	r31, 0x00	; 0
+    20f2:	80 81       	ld	r24, Z
+    20f4:	8e 7f       	andi	r24, 0xFE	; 254
+    20f6:	8c 93       	st	X, r24
 }
-    2198:	cf 91       	pop	r28
-    219a:	df 91       	pop	r29
-    219c:	08 95       	ret
+    20f8:	cf 91       	pop	r28
+    20fa:	df 91       	pop	r29
+    20fc:	08 95       	ret
 
-0000219e <SPI_sendReceiveByte>:
+000020fe <SPI_sendReceiveByte>:
  * Description :
  * Send the required data through SPI to the other SPI device.
  * In the same time data will be received from the other device.
  */
 uint8 SPI_sendReceiveByte(uint8 data)
 {
-    219e:	df 93       	push	r29
-    21a0:	cf 93       	push	r28
-    21a2:	0f 92       	push	r0
-    21a4:	cd b7       	in	r28, 0x3d	; 61
-    21a6:	de b7       	in	r29, 0x3e	; 62
-    21a8:	89 83       	std	Y+1, r24	; 0x01
+    20fe:	df 93       	push	r29
+    2100:	cf 93       	push	r28
+    2102:	0f 92       	push	r0
+    2104:	cd b7       	in	r28, 0x3d	; 61
+    2106:	de b7       	in	r29, 0x3e	; 62
+    2108:	89 83       	std	Y+1, r24	; 0x01
 	/* Initiate the communication and send data by SPI */
 	SPDR = data;
-    21aa:	ef e2       	ldi	r30, 0x2F	; 47
-    21ac:	f0 e0       	ldi	r31, 0x00	; 0
-    21ae:	89 81       	ldd	r24, Y+1	; 0x01
-    21b0:	80 83       	st	Z, r24
+    210a:	ef e2       	ldi	r30, 0x2F	; 47
+    210c:	f0 e0       	ldi	r31, 0x00	; 0
+    210e:	89 81       	ldd	r24, Y+1	; 0x01
+    2110:	80 83       	st	Z, r24
 
 	/* Wait until SPI interrupt flag SPIF = 1 (data has been sent/received correctly) */
 	while(BIT_IS_CLEAR(SPSR,SPIF)){}
-    21b2:	ee e2       	ldi	r30, 0x2E	; 46
-    21b4:	f0 e0       	ldi	r31, 0x00	; 0
-    21b6:	80 81       	ld	r24, Z
-    21b8:	88 23       	and	r24, r24
-    21ba:	dc f7       	brge	.-10     	; 0x21b2 <SPI_sendReceiveByte+0x14>
+    2112:	ee e2       	ldi	r30, 0x2E	; 46
+    2114:	f0 e0       	ldi	r31, 0x00	; 0
+    2116:	80 81       	ld	r24, Z
+    2118:	88 23       	and	r24, r24
+    211a:	dc f7       	brge	.-10     	; 0x2112 <SPI_sendReceiveByte+0x14>
 
 	/*
 	 * Note: SPIF flag is cleared by first reading SPSR (with SPIF set) which is done in the previous step.
 	 * and then accessing SPDR like the below line.
 	 */
 	return SPDR;
-    21bc:	ef e2       	ldi	r30, 0x2F	; 47
-    21be:	f0 e0       	ldi	r31, 0x00	; 0
-    21c0:	80 81       	ld	r24, Z
+    211c:	ef e2       	ldi	r30, 0x2F	; 47
+    211e:	f0 e0       	ldi	r31, 0x00	; 0
+    2120:	80 81       	ld	r24, Z
 }
-    21c2:	0f 90       	pop	r0
-    21c4:	cf 91       	pop	r28
-    21c6:	df 91       	pop	r29
-    21c8:	08 95       	ret
+    2122:	0f 90       	pop	r0
+    2124:	cf 91       	pop	r28
+    2126:	df 91       	pop	r29
+    2128:	08 95       	ret
 
-000021ca <SPI_sendString>:
+0000212a <SPI_sendString>:
 /*
  * Description :
  * Send the required string through SPI to the other SPI device.
  */
 void SPI_sendString(const uint8 *str)
 {
-    21ca:	df 93       	push	r29
-    21cc:	cf 93       	push	r28
-    21ce:	00 d0       	rcall	.+0      	; 0x21d0 <SPI_sendString+0x6>
-    21d0:	00 d0       	rcall	.+0      	; 0x21d2 <SPI_sendString+0x8>
-    21d2:	cd b7       	in	r28, 0x3d	; 61
-    21d4:	de b7       	in	r29, 0x3e	; 62
-    21d6:	9c 83       	std	Y+4, r25	; 0x04
-    21d8:	8b 83       	std	Y+3, r24	; 0x03
+    212a:	df 93       	push	r29
+    212c:	cf 93       	push	r28
+    212e:	00 d0       	rcall	.+0      	; 0x2130 <SPI_sendString+0x6>
+    2130:	00 d0       	rcall	.+0      	; 0x2132 <SPI_sendString+0x8>
+    2132:	cd b7       	in	r28, 0x3d	; 61
+    2134:	de b7       	in	r29, 0x3e	; 62
+    2136:	9c 83       	std	Y+4, r25	; 0x04
+    2138:	8b 83       	std	Y+3, r24	; 0x03
 	uint8 i = 0;
-    21da:	1a 82       	std	Y+2, r1	; 0x02
+    213a:	1a 82       	std	Y+2, r1	; 0x02
 	uint8 received_data = 0;
-    21dc:	19 82       	std	Y+1, r1	; 0x01
-    21de:	0f c0       	rjmp	.+30     	; 0x21fe <SPI_sendString+0x34>
+    213c:	19 82       	std	Y+1, r1	; 0x01
+    213e:	0f c0       	rjmp	.+30     	; 0x215e <SPI_sendString+0x34>
 	{
 		/*
 		 * received_data contains the received data from the other device.
 		 * It is a dummy data variable as we just need to send the string to other device.
 		 */
 		received_data = SPI_sendReceiveByte(str[i]);
-    21e0:	8a 81       	ldd	r24, Y+2	; 0x02
-    21e2:	28 2f       	mov	r18, r24
-    21e4:	30 e0       	ldi	r19, 0x00	; 0
-    21e6:	8b 81       	ldd	r24, Y+3	; 0x03
-    21e8:	9c 81       	ldd	r25, Y+4	; 0x04
-    21ea:	fc 01       	movw	r30, r24
-    21ec:	e2 0f       	add	r30, r18
-    21ee:	f3 1f       	adc	r31, r19
-    21f0:	80 81       	ld	r24, Z
-    21f2:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
-    21f6:	89 83       	std	Y+1, r24	; 0x01
+    2140:	8a 81       	ldd	r24, Y+2	; 0x02
+    2142:	28 2f       	mov	r18, r24
+    2144:	30 e0       	ldi	r19, 0x00	; 0
+    2146:	8b 81       	ldd	r24, Y+3	; 0x03
+    2148:	9c 81       	ldd	r25, Y+4	; 0x04
+    214a:	fc 01       	movw	r30, r24
+    214c:	e2 0f       	add	r30, r18
+    214e:	f3 1f       	adc	r31, r19
+    2150:	80 81       	ld	r24, Z
+    2152:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
+    2156:	89 83       	std	Y+1, r24	; 0x01
 		i++;
-    21f8:	8a 81       	ldd	r24, Y+2	; 0x02
-    21fa:	8f 5f       	subi	r24, 0xFF	; 255
-    21fc:	8a 83       	std	Y+2, r24	; 0x02
+    2158:	8a 81       	ldd	r24, Y+2	; 0x02
+    215a:	8f 5f       	subi	r24, 0xFF	; 255
+    215c:	8a 83       	std	Y+2, r24	; 0x02
 {
 	uint8 i = 0;
 	uint8 received_data = 0;
 
 	/* Send the whole string */
 	while(str[i] != '\0')
-    21fe:	8a 81       	ldd	r24, Y+2	; 0x02
-    2200:	28 2f       	mov	r18, r24
-    2202:	30 e0       	ldi	r19, 0x00	; 0
-    2204:	8b 81       	ldd	r24, Y+3	; 0x03
-    2206:	9c 81       	ldd	r25, Y+4	; 0x04
-    2208:	fc 01       	movw	r30, r24
-    220a:	e2 0f       	add	r30, r18
-    220c:	f3 1f       	adc	r31, r19
-    220e:	80 81       	ld	r24, Z
-    2210:	88 23       	and	r24, r24
-    2212:	31 f7       	brne	.-52     	; 0x21e0 <SPI_sendString+0x16>
+    215e:	8a 81       	ldd	r24, Y+2	; 0x02
+    2160:	28 2f       	mov	r18, r24
+    2162:	30 e0       	ldi	r19, 0x00	; 0
+    2164:	8b 81       	ldd	r24, Y+3	; 0x03
+    2166:	9c 81       	ldd	r25, Y+4	; 0x04
+    2168:	fc 01       	movw	r30, r24
+    216a:	e2 0f       	add	r30, r18
+    216c:	f3 1f       	adc	r31, r19
+    216e:	80 81       	ld	r24, Z
+    2170:	88 23       	and	r24, r24
+    2172:	31 f7       	brne	.-52     	; 0x2140 <SPI_sendString+0x16>
 		 * It is a dummy data variable as we just need to send the string to other device.
 		 */
 		received_data = SPI_sendReceiveByte(str[i]);
 		i++;
 	}
 }
-    2214:	0f 90       	pop	r0
-    2216:	0f 90       	pop	r0
-    2218:	0f 90       	pop	r0
-    221a:	0f 90       	pop	r0
-    221c:	cf 91       	pop	r28
-    221e:	df 91       	pop	r29
-    2220:	08 95       	ret
+    2174:	0f 90       	pop	r0
+    2176:	0f 90       	pop	r0
+    2178:	0f 90       	pop	r0
+    217a:	0f 90       	pop	r0
+    217c:	cf 91       	pop	r28
+    217e:	df 91       	pop	r29
+    2180:	08 95       	ret
 
-00002222 <SPI_receiveString>:
+00002182 <SPI_receiveString>:
 /*
  * Description :
  * Receive the required string until the '#' symbol through SPI from the other SPI device.
  */
 void SPI_receiveString(uint8 *str)
 {
-    2222:	0f 93       	push	r16
-    2224:	1f 93       	push	r17
-    2226:	df 93       	push	r29
-    2228:	cf 93       	push	r28
-    222a:	00 d0       	rcall	.+0      	; 0x222c <SPI_receiveString+0xa>
-    222c:	0f 92       	push	r0
-    222e:	cd b7       	in	r28, 0x3d	; 61
-    2230:	de b7       	in	r29, 0x3e	; 62
-    2232:	9b 83       	std	Y+3, r25	; 0x03
-    2234:	8a 83       	std	Y+2, r24	; 0x02
+    2182:	0f 93       	push	r16
+    2184:	1f 93       	push	r17
+    2186:	df 93       	push	r29
+    2188:	cf 93       	push	r28
+    218a:	00 d0       	rcall	.+0      	; 0x218c <SPI_receiveString+0xa>
+    218c:	0f 92       	push	r0
+    218e:	cd b7       	in	r28, 0x3d	; 61
+    2190:	de b7       	in	r29, 0x3e	; 62
+    2192:	9b 83       	std	Y+3, r25	; 0x03
+    2194:	8a 83       	std	Y+2, r24	; 0x02
 	uint8 i = 0;
-    2236:	19 82       	std	Y+1, r1	; 0x01
+    2196:	19 82       	std	Y+1, r1	; 0x01
 
 	/* Receive the first byte */
 	str[i] = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
-    2238:	89 81       	ldd	r24, Y+1	; 0x01
-    223a:	28 2f       	mov	r18, r24
-    223c:	30 e0       	ldi	r19, 0x00	; 0
-    223e:	8a 81       	ldd	r24, Y+2	; 0x02
-    2240:	9b 81       	ldd	r25, Y+3	; 0x03
-    2242:	8c 01       	movw	r16, r24
-    2244:	02 0f       	add	r16, r18
-    2246:	13 1f       	adc	r17, r19
-    2248:	8f ef       	ldi	r24, 0xFF	; 255
-    224a:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
-    224e:	f8 01       	movw	r30, r16
-    2250:	80 83       	st	Z, r24
-    2252:	10 c0       	rjmp	.+32     	; 0x2274 <SPI_receiveString+0x52>
+    2198:	89 81       	ldd	r24, Y+1	; 0x01
+    219a:	28 2f       	mov	r18, r24
+    219c:	30 e0       	ldi	r19, 0x00	; 0
+    219e:	8a 81       	ldd	r24, Y+2	; 0x02
+    21a0:	9b 81       	ldd	r25, Y+3	; 0x03
+    21a2:	8c 01       	movw	r16, r24
+    21a4:	02 0f       	add	r16, r18
+    21a6:	13 1f       	adc	r17, r19
+    21a8:	8f ef       	ldi	r24, 0xFF	; 255
+    21aa:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
+    21ae:	f8 01       	movw	r30, r16
+    21b0:	80 83       	st	Z, r24
+    21b2:	10 c0       	rjmp	.+32     	; 0x21d4 <SPI_receiveString+0x52>
 
 	/* Receive the whole string until the '#' */
 	while(str[i] != '#')
 	{
 		i++;
-    2254:	89 81       	ldd	r24, Y+1	; 0x01
-    2256:	8f 5f       	subi	r24, 0xFF	; 255
-    2258:	89 83       	std	Y+1, r24	; 0x01
+    21b4:	89 81       	ldd	r24, Y+1	; 0x01
+    21b6:	8f 5f       	subi	r24, 0xFF	; 255
+    21b8:	89 83       	std	Y+1, r24	; 0x01
 		str[i] = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
-    225a:	89 81       	ldd	r24, Y+1	; 0x01
-    225c:	28 2f       	mov	r18, r24
-    225e:	30 e0       	ldi	r19, 0x00	; 0
-    2260:	8a 81       	ldd	r24, Y+2	; 0x02
-    2262:	9b 81       	ldd	r25, Y+3	; 0x03
-    2264:	8c 01       	movw	r16, r24
-    2266:	02 0f       	add	r16, r18
-    2268:	13 1f       	adc	r17, r19
-    226a:	8f ef       	ldi	r24, 0xFF	; 255
-    226c:	0e 94 cf 10 	call	0x219e	; 0x219e <SPI_sendReceiveByte>
-    2270:	f8 01       	movw	r30, r16
-    2272:	80 83       	st	Z, r24
+    21ba:	89 81       	ldd	r24, Y+1	; 0x01
+    21bc:	28 2f       	mov	r18, r24
+    21be:	30 e0       	ldi	r19, 0x00	; 0
+    21c0:	8a 81       	ldd	r24, Y+2	; 0x02
+    21c2:	9b 81       	ldd	r25, Y+3	; 0x03
+    21c4:	8c 01       	movw	r16, r24
+    21c6:	02 0f       	add	r16, r18
+    21c8:	13 1f       	adc	r17, r19
+    21ca:	8f ef       	ldi	r24, 0xFF	; 255
+    21cc:	0e 94 7f 10 	call	0x20fe	; 0x20fe <SPI_sendReceiveByte>
+    21d0:	f8 01       	movw	r30, r16
+    21d2:	80 83       	st	Z, r24
 
 	/* Receive the first byte */
 	str[i] = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
 
 	/* Receive the whole string until the '#' */
 	while(str[i] != '#')
-    2274:	89 81       	ldd	r24, Y+1	; 0x01
-    2276:	28 2f       	mov	r18, r24
-    2278:	30 e0       	ldi	r19, 0x00	; 0
-    227a:	8a 81       	ldd	r24, Y+2	; 0x02
-    227c:	9b 81       	ldd	r25, Y+3	; 0x03
-    227e:	fc 01       	movw	r30, r24
-    2280:	e2 0f       	add	r30, r18
-    2282:	f3 1f       	adc	r31, r19
-    2284:	80 81       	ld	r24, Z
-    2286:	83 32       	cpi	r24, 0x23	; 35
-    2288:	29 f7       	brne	.-54     	; 0x2254 <SPI_receiveString+0x32>
+    21d4:	89 81       	ldd	r24, Y+1	; 0x01
+    21d6:	28 2f       	mov	r18, r24
+    21d8:	30 e0       	ldi	r19, 0x00	; 0
+    21da:	8a 81       	ldd	r24, Y+2	; 0x02
+    21dc:	9b 81       	ldd	r25, Y+3	; 0x03
+    21de:	fc 01       	movw	r30, r24
+    21e0:	e2 0f       	add	r30, r18
+    21e2:	f3 1f       	adc	r31, r19
+    21e4:	80 81       	ld	r24, Z
+    21e6:	83 32       	cpi	r24, 0x23	; 35
+    21e8:	29 f7       	brne	.-54     	; 0x21b4 <SPI_receiveString+0x32>
 		i++;
 		str[i] = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
 	}
 
 	/* After receiving the whole string plus the '#', replace the '#' with '\0' */
 	str[i] = '\0';
-    228a:	89 81       	ldd	r24, Y+1	; 0x01
-    228c:	28 2f       	mov	r18, r24
-    228e:	30 e0       	ldi	r19, 0x00	; 0
-    2290:	8a 81       	ldd	r24, Y+2	; 0x02
-    2292:	9b 81       	ldd	r25, Y+3	; 0x03
-    2294:	fc 01       	movw	r30, r24
-    2296:	e2 0f       	add	r30, r18
-    2298:	f3 1f       	adc	r31, r19
-    229a:	10 82       	st	Z, r1
+    21ea:	89 81       	ldd	r24, Y+1	; 0x01
+    21ec:	28 2f       	mov	r18, r24
+    21ee:	30 e0       	ldi	r19, 0x00	; 0
+    21f0:	8a 81       	ldd	r24, Y+2	; 0x02
+    21f2:	9b 81       	ldd	r25, Y+3	; 0x03
+    21f4:	fc 01       	movw	r30, r24
+    21f6:	e2 0f       	add	r30, r18
+    21f8:	f3 1f       	adc	r31, r19
+    21fa:	10 82       	st	Z, r1
 }
-    229c:	0f 90       	pop	r0
-    229e:	0f 90       	pop	r0
-    22a0:	0f 90       	pop	r0
-    22a2:	cf 91       	pop	r28
-    22a4:	df 91       	pop	r29
-    22a6:	1f 91       	pop	r17
-    22a8:	0f 91       	pop	r16
-    22aa:	08 95       	ret
+    21fc:	0f 90       	pop	r0
+    21fe:	0f 90       	pop	r0
+    2200:	0f 90       	pop	r0
+    2202:	cf 91       	pop	r28
+    2204:	df 91       	pop	r29
+    2206:	1f 91       	pop	r17
+    2208:	0f 91       	pop	r16
+    220a:	08 95       	ret
 
-000022ac <__divmodhi4>:
-    22ac:	97 fb       	bst	r25, 7
-    22ae:	09 2e       	mov	r0, r25
-    22b0:	07 26       	eor	r0, r23
-    22b2:	0a d0       	rcall	.+20     	; 0x22c8 <__divmodhi4_neg1>
-    22b4:	77 fd       	sbrc	r23, 7
-    22b6:	04 d0       	rcall	.+8      	; 0x22c0 <__divmodhi4_neg2>
-    22b8:	0c d0       	rcall	.+24     	; 0x22d2 <__udivmodhi4>
-    22ba:	06 d0       	rcall	.+12     	; 0x22c8 <__divmodhi4_neg1>
-    22bc:	00 20       	and	r0, r0
-    22be:	1a f4       	brpl	.+6      	; 0x22c6 <__divmodhi4_exit>
+0000220c <__divmodhi4>:
+    220c:	97 fb       	bst	r25, 7
+    220e:	09 2e       	mov	r0, r25
+    2210:	07 26       	eor	r0, r23
+    2212:	0a d0       	rcall	.+20     	; 0x2228 <__divmodhi4_neg1>
+    2214:	77 fd       	sbrc	r23, 7
+    2216:	04 d0       	rcall	.+8      	; 0x2220 <__divmodhi4_neg2>
+    2218:	0c d0       	rcall	.+24     	; 0x2232 <__udivmodhi4>
+    221a:	06 d0       	rcall	.+12     	; 0x2228 <__divmodhi4_neg1>
+    221c:	00 20       	and	r0, r0
+    221e:	1a f4       	brpl	.+6      	; 0x2226 <__divmodhi4_exit>
 
-000022c0 <__divmodhi4_neg2>:
-    22c0:	70 95       	com	r23
-    22c2:	61 95       	neg	r22
-    22c4:	7f 4f       	sbci	r23, 0xFF	; 255
+00002220 <__divmodhi4_neg2>:
+    2220:	70 95       	com	r23
+    2222:	61 95       	neg	r22
+    2224:	7f 4f       	sbci	r23, 0xFF	; 255
 
-000022c6 <__divmodhi4_exit>:
+00002226 <__divmodhi4_exit>:
+    2226:	08 95       	ret
+
+00002228 <__divmodhi4_neg1>:
+    2228:	f6 f7       	brtc	.-4      	; 0x2226 <__divmodhi4_exit>
+    222a:	90 95       	com	r25
+    222c:	81 95       	neg	r24
+    222e:	9f 4f       	sbci	r25, 0xFF	; 255
+    2230:	08 95       	ret
+
+00002232 <__udivmodhi4>:
+    2232:	aa 1b       	sub	r26, r26
+    2234:	bb 1b       	sub	r27, r27
+    2236:	51 e1       	ldi	r21, 0x11	; 17
+    2238:	07 c0       	rjmp	.+14     	; 0x2248 <__udivmodhi4_ep>
+
+0000223a <__udivmodhi4_loop>:
+    223a:	aa 1f       	adc	r26, r26
+    223c:	bb 1f       	adc	r27, r27
+    223e:	a6 17       	cp	r26, r22
+    2240:	b7 07       	cpc	r27, r23
+    2242:	10 f0       	brcs	.+4      	; 0x2248 <__udivmodhi4_ep>
+    2244:	a6 1b       	sub	r26, r22
+    2246:	b7 0b       	sbc	r27, r23
+
+00002248 <__udivmodhi4_ep>:
+    2248:	88 1f       	adc	r24, r24
+    224a:	99 1f       	adc	r25, r25
+    224c:	5a 95       	dec	r21
+    224e:	a9 f7       	brne	.-22     	; 0x223a <__udivmodhi4_loop>
+    2250:	80 95       	com	r24
+    2252:	90 95       	com	r25
+    2254:	bc 01       	movw	r22, r24
+    2256:	cd 01       	movw	r24, r26
+    2258:	08 95       	ret
+
+0000225a <__prologue_saves__>:
+    225a:	2f 92       	push	r2
+    225c:	3f 92       	push	r3
+    225e:	4f 92       	push	r4
+    2260:	5f 92       	push	r5
+    2262:	6f 92       	push	r6
+    2264:	7f 92       	push	r7
+    2266:	8f 92       	push	r8
+    2268:	9f 92       	push	r9
+    226a:	af 92       	push	r10
+    226c:	bf 92       	push	r11
+    226e:	cf 92       	push	r12
+    2270:	df 92       	push	r13
+    2272:	ef 92       	push	r14
+    2274:	ff 92       	push	r15
+    2276:	0f 93       	push	r16
+    2278:	1f 93       	push	r17
+    227a:	cf 93       	push	r28
+    227c:	df 93       	push	r29
+    227e:	cd b7       	in	r28, 0x3d	; 61
+    2280:	de b7       	in	r29, 0x3e	; 62
+    2282:	ca 1b       	sub	r28, r26
+    2284:	db 0b       	sbc	r29, r27
+    2286:	0f b6       	in	r0, 0x3f	; 63
+    2288:	f8 94       	cli
+    228a:	de bf       	out	0x3e, r29	; 62
+    228c:	0f be       	out	0x3f, r0	; 63
+    228e:	cd bf       	out	0x3d, r28	; 61
+    2290:	09 94       	ijmp
+
+00002292 <__epilogue_restores__>:
+    2292:	2a 88       	ldd	r2, Y+18	; 0x12
+    2294:	39 88       	ldd	r3, Y+17	; 0x11
+    2296:	48 88       	ldd	r4, Y+16	; 0x10
+    2298:	5f 84       	ldd	r5, Y+15	; 0x0f
+    229a:	6e 84       	ldd	r6, Y+14	; 0x0e
+    229c:	7d 84       	ldd	r7, Y+13	; 0x0d
+    229e:	8c 84       	ldd	r8, Y+12	; 0x0c
+    22a0:	9b 84       	ldd	r9, Y+11	; 0x0b
+    22a2:	aa 84       	ldd	r10, Y+10	; 0x0a
+    22a4:	b9 84       	ldd	r11, Y+9	; 0x09
+    22a6:	c8 84       	ldd	r12, Y+8	; 0x08
+    22a8:	df 80       	ldd	r13, Y+7	; 0x07
+    22aa:	ee 80       	ldd	r14, Y+6	; 0x06
+    22ac:	fd 80       	ldd	r15, Y+5	; 0x05
+    22ae:	0c 81       	ldd	r16, Y+4	; 0x04
+    22b0:	1b 81       	ldd	r17, Y+3	; 0x03
+    22b2:	aa 81       	ldd	r26, Y+2	; 0x02
+    22b4:	b9 81       	ldd	r27, Y+1	; 0x01
+    22b6:	ce 0f       	add	r28, r30
+    22b8:	d1 1d       	adc	r29, r1
+    22ba:	0f b6       	in	r0, 0x3f	; 63
+    22bc:	f8 94       	cli
+    22be:	de bf       	out	0x3e, r29	; 62
+    22c0:	0f be       	out	0x3f, r0	; 63
+    22c2:	cd bf       	out	0x3d, r28	; 61
+    22c4:	ed 01       	movw	r28, r26
     22c6:	08 95       	ret
 
-000022c8 <__divmodhi4_neg1>:
-    22c8:	f6 f7       	brtc	.-4      	; 0x22c6 <__divmodhi4_exit>
-    22ca:	90 95       	com	r25
-    22cc:	81 95       	neg	r24
-    22ce:	9f 4f       	sbci	r25, 0xFF	; 255
-    22d0:	08 95       	ret
+000022c8 <itoa>:
+    22c8:	fb 01       	movw	r30, r22
+    22ca:	9f 01       	movw	r18, r30
+    22cc:	e8 94       	clt
+    22ce:	42 30       	cpi	r20, 0x02	; 2
+    22d0:	c4 f0       	brlt	.+48     	; 0x2302 <itoa+0x3a>
+    22d2:	45 32       	cpi	r20, 0x25	; 37
+    22d4:	b4 f4       	brge	.+44     	; 0x2302 <itoa+0x3a>
+    22d6:	4a 30       	cpi	r20, 0x0A	; 10
+    22d8:	29 f4       	brne	.+10     	; 0x22e4 <itoa+0x1c>
+    22da:	97 fb       	bst	r25, 7
+    22dc:	1e f4       	brtc	.+6      	; 0x22e4 <itoa+0x1c>
+    22de:	90 95       	com	r25
+    22e0:	81 95       	neg	r24
+    22e2:	9f 4f       	sbci	r25, 0xFF	; 255
+    22e4:	64 2f       	mov	r22, r20
+    22e6:	77 27       	eor	r23, r23
+    22e8:	0e 94 19 11 	call	0x2232	; 0x2232 <__udivmodhi4>
+    22ec:	80 5d       	subi	r24, 0xD0	; 208
+    22ee:	8a 33       	cpi	r24, 0x3A	; 58
+    22f0:	0c f0       	brlt	.+2      	; 0x22f4 <itoa+0x2c>
+    22f2:	89 5d       	subi	r24, 0xD9	; 217
+    22f4:	81 93       	st	Z+, r24
+    22f6:	cb 01       	movw	r24, r22
+    22f8:	00 97       	sbiw	r24, 0x00	; 0
+    22fa:	a1 f7       	brne	.-24     	; 0x22e4 <itoa+0x1c>
+    22fc:	16 f4       	brtc	.+4      	; 0x2302 <itoa+0x3a>
+    22fe:	5d e2       	ldi	r21, 0x2D	; 45
+    2300:	51 93       	st	Z+, r21
+    2302:	10 82       	st	Z, r1
+    2304:	c9 01       	movw	r24, r18
+    2306:	0c 94 85 11 	jmp	0x230a	; 0x230a <strrev>
 
-000022d2 <__udivmodhi4>:
-    22d2:	aa 1b       	sub	r26, r26
-    22d4:	bb 1b       	sub	r27, r27
-    22d6:	51 e1       	ldi	r21, 0x11	; 17
-    22d8:	07 c0       	rjmp	.+14     	; 0x22e8 <__udivmodhi4_ep>
+0000230a <strrev>:
+    230a:	dc 01       	movw	r26, r24
+    230c:	fc 01       	movw	r30, r24
+    230e:	67 2f       	mov	r22, r23
+    2310:	71 91       	ld	r23, Z+
+    2312:	77 23       	and	r23, r23
+    2314:	e1 f7       	brne	.-8      	; 0x230e <strrev+0x4>
+    2316:	32 97       	sbiw	r30, 0x02	; 2
+    2318:	04 c0       	rjmp	.+8      	; 0x2322 <strrev+0x18>
+    231a:	7c 91       	ld	r23, X
+    231c:	6d 93       	st	X+, r22
+    231e:	70 83       	st	Z, r23
+    2320:	62 91       	ld	r22, -Z
+    2322:	ae 17       	cp	r26, r30
+    2324:	bf 07       	cpc	r27, r31
+    2326:	c8 f3       	brcs	.-14     	; 0x231a <strrev+0x10>
+    2328:	08 95       	ret
 
-000022da <__udivmodhi4_loop>:
-    22da:	aa 1f       	adc	r26, r26
-    22dc:	bb 1f       	adc	r27, r27
-    22de:	a6 17       	cp	r26, r22
-    22e0:	b7 07       	cpc	r27, r23
-    22e2:	10 f0       	brcs	.+4      	; 0x22e8 <__udivmodhi4_ep>
-    22e4:	a6 1b       	sub	r26, r22
-    22e6:	b7 0b       	sbc	r27, r23
+0000232a <_exit>:
+    232a:	f8 94       	cli
 
-000022e8 <__udivmodhi4_ep>:
-    22e8:	88 1f       	adc	r24, r24
-    22ea:	99 1f       	adc	r25, r25
-    22ec:	5a 95       	dec	r21
-    22ee:	a9 f7       	brne	.-22     	; 0x22da <__udivmodhi4_loop>
-    22f0:	80 95       	com	r24
-    22f2:	90 95       	com	r25
-    22f4:	bc 01       	movw	r22, r24
-    22f6:	cd 01       	movw	r24, r26
-    22f8:	08 95       	ret
-
-000022fa <__prologue_saves__>:
-    22fa:	2f 92       	push	r2
-    22fc:	3f 92       	push	r3
-    22fe:	4f 92       	push	r4
-    2300:	5f 92       	push	r5
-    2302:	6f 92       	push	r6
-    2304:	7f 92       	push	r7
-    2306:	8f 92       	push	r8
-    2308:	9f 92       	push	r9
-    230a:	af 92       	push	r10
-    230c:	bf 92       	push	r11
-    230e:	cf 92       	push	r12
-    2310:	df 92       	push	r13
-    2312:	ef 92       	push	r14
-    2314:	ff 92       	push	r15
-    2316:	0f 93       	push	r16
-    2318:	1f 93       	push	r17
-    231a:	cf 93       	push	r28
-    231c:	df 93       	push	r29
-    231e:	cd b7       	in	r28, 0x3d	; 61
-    2320:	de b7       	in	r29, 0x3e	; 62
-    2322:	ca 1b       	sub	r28, r26
-    2324:	db 0b       	sbc	r29, r27
-    2326:	0f b6       	in	r0, 0x3f	; 63
-    2328:	f8 94       	cli
-    232a:	de bf       	out	0x3e, r29	; 62
-    232c:	0f be       	out	0x3f, r0	; 63
-    232e:	cd bf       	out	0x3d, r28	; 61
-    2330:	09 94       	ijmp
-
-00002332 <__epilogue_restores__>:
-    2332:	2a 88       	ldd	r2, Y+18	; 0x12
-    2334:	39 88       	ldd	r3, Y+17	; 0x11
-    2336:	48 88       	ldd	r4, Y+16	; 0x10
-    2338:	5f 84       	ldd	r5, Y+15	; 0x0f
-    233a:	6e 84       	ldd	r6, Y+14	; 0x0e
-    233c:	7d 84       	ldd	r7, Y+13	; 0x0d
-    233e:	8c 84       	ldd	r8, Y+12	; 0x0c
-    2340:	9b 84       	ldd	r9, Y+11	; 0x0b
-    2342:	aa 84       	ldd	r10, Y+10	; 0x0a
-    2344:	b9 84       	ldd	r11, Y+9	; 0x09
-    2346:	c8 84       	ldd	r12, Y+8	; 0x08
-    2348:	df 80       	ldd	r13, Y+7	; 0x07
-    234a:	ee 80       	ldd	r14, Y+6	; 0x06
-    234c:	fd 80       	ldd	r15, Y+5	; 0x05
-    234e:	0c 81       	ldd	r16, Y+4	; 0x04
-    2350:	1b 81       	ldd	r17, Y+3	; 0x03
-    2352:	aa 81       	ldd	r26, Y+2	; 0x02
-    2354:	b9 81       	ldd	r27, Y+1	; 0x01
-    2356:	ce 0f       	add	r28, r30
-    2358:	d1 1d       	adc	r29, r1
-    235a:	0f b6       	in	r0, 0x3f	; 63
-    235c:	f8 94       	cli
-    235e:	de bf       	out	0x3e, r29	; 62
-    2360:	0f be       	out	0x3f, r0	; 63
-    2362:	cd bf       	out	0x3d, r28	; 61
-    2364:	ed 01       	movw	r28, r26
-    2366:	08 95       	ret
-
-00002368 <itoa>:
-    2368:	fb 01       	movw	r30, r22
-    236a:	9f 01       	movw	r18, r30
-    236c:	e8 94       	clt
-    236e:	42 30       	cpi	r20, 0x02	; 2
-    2370:	c4 f0       	brlt	.+48     	; 0x23a2 <itoa+0x3a>
-    2372:	45 32       	cpi	r20, 0x25	; 37
-    2374:	b4 f4       	brge	.+44     	; 0x23a2 <itoa+0x3a>
-    2376:	4a 30       	cpi	r20, 0x0A	; 10
-    2378:	29 f4       	brne	.+10     	; 0x2384 <itoa+0x1c>
-    237a:	97 fb       	bst	r25, 7
-    237c:	1e f4       	brtc	.+6      	; 0x2384 <itoa+0x1c>
-    237e:	90 95       	com	r25
-    2380:	81 95       	neg	r24
-    2382:	9f 4f       	sbci	r25, 0xFF	; 255
-    2384:	64 2f       	mov	r22, r20
-    2386:	77 27       	eor	r23, r23
-    2388:	0e 94 69 11 	call	0x22d2	; 0x22d2 <__udivmodhi4>
-    238c:	80 5d       	subi	r24, 0xD0	; 208
-    238e:	8a 33       	cpi	r24, 0x3A	; 58
-    2390:	0c f0       	brlt	.+2      	; 0x2394 <itoa+0x2c>
-    2392:	89 5d       	subi	r24, 0xD9	; 217
-    2394:	81 93       	st	Z+, r24
-    2396:	cb 01       	movw	r24, r22
-    2398:	00 97       	sbiw	r24, 0x00	; 0
-    239a:	a1 f7       	brne	.-24     	; 0x2384 <itoa+0x1c>
-    239c:	16 f4       	brtc	.+4      	; 0x23a2 <itoa+0x3a>
-    239e:	5d e2       	ldi	r21, 0x2D	; 45
-    23a0:	51 93       	st	Z+, r21
-    23a2:	10 82       	st	Z, r1
-    23a4:	c9 01       	movw	r24, r18
-    23a6:	0c 94 d5 11 	jmp	0x23aa	; 0x23aa <strrev>
-
-000023aa <strrev>:
-    23aa:	dc 01       	movw	r26, r24
-    23ac:	fc 01       	movw	r30, r24
-    23ae:	67 2f       	mov	r22, r23
-    23b0:	71 91       	ld	r23, Z+
-    23b2:	77 23       	and	r23, r23
-    23b4:	e1 f7       	brne	.-8      	; 0x23ae <strrev+0x4>
-    23b6:	32 97       	sbiw	r30, 0x02	; 2
-    23b8:	04 c0       	rjmp	.+8      	; 0x23c2 <strrev+0x18>
-    23ba:	7c 91       	ld	r23, X
-    23bc:	6d 93       	st	X+, r22
-    23be:	70 83       	st	Z, r23
-    23c0:	62 91       	ld	r22, -Z
-    23c2:	ae 17       	cp	r26, r30
-    23c4:	bf 07       	cpc	r27, r31
-    23c6:	c8 f3       	brcs	.-14     	; 0x23ba <strrev+0x10>
-    23c8:	08 95       	ret
-
-000023ca <_exit>:
-    23ca:	f8 94       	cli
-
-000023cc <__stop_program>:
-    23cc:	ff cf       	rjmp	.-2      	; 0x23cc <__stop_program>
+0000232c <__stop_program>:
+    232c:	ff cf       	rjmp	.-2      	; 0x232c <__stop_program>

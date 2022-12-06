@@ -10,7 +10,8 @@
 #include "spi.h"
 #include "TC72.h"
 #include "TimerCompareMode.h"
-#include "util/delay.h"
+#include <avr/interrupt.h>
+
 
 int main(void)
 {
@@ -21,9 +22,12 @@ int main(void)
 	Timer2_Init_CTC_Mode(250);
 	while(1)
 	{
-		Poll();
-		_delay_ms(500);
+
 	}
 }
 
+ISR(TIMER2_COMP_vect)
+{
+	Poll();
+}
 
