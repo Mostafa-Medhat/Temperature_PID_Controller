@@ -8,7 +8,7 @@
 #ifndef TC72_H_
 #define TC72_H_
 
-#define CONTINUES_MODE	0X04
+#define CONTINUOUS_MODE	0X04
 #define ONE_SHOT		0x14
 
 void TC72_Init(unsigned char mode);
