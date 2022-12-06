@@ -8,6 +8,6 @@
 
 void Handle_data(unsigned char data)
 {
-	LCD_clearScreen();
+	LCD_moveCursor(0, 0);
 	LCD_intgerToString(data);
 }
