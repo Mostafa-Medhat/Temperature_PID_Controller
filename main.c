@@ -14,7 +14,7 @@
 int main(void)
 {
 	SPI_initMaster();
-	TC72_Init(CONTINUES_MODE);
+	TC72_Init(CONTINUOUS_MODE);
 	LCD_init();
 	SetPollingTime(500);
 	while(1)
