@@ -11,8 +11,6 @@
 #include "TC72.h"
 #include "util/delay.h"
 
-
-
 int main(void)
 {
 	SPI_initMaster();
@@ -21,11 +19,8 @@ int main(void)
 	SetPollingTime(500);
 	while(1)
 	{
-
 		Poll();
 		_delay_ms(500);
-
 	}
-
 }
 
