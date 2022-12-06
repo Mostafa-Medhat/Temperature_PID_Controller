@@ -7,6 +7,7 @@ C_SRCS += \
 ../DIO_config.c \
 ../PollingDataClient.c \
 ../TC72.c \
+../TimerCompareMode.c \
 ../device.c \
 ../gpio.c \
 ../lcd.c \
@@ -19,6 +20,7 @@ OBJS += \
 ./DIO_config.o \
 ./PollingDataClient.o \
 ./TC72.o \
+./TimerCompareMode.o \
 ./device.o \
 ./gpio.o \
 ./lcd.o \
@@ -31,6 +33,7 @@ C_DEPS += \
 ./DIO_config.d \
 ./PollingDataClient.d \
 ./TC72.d \
+./TimerCompareMode.d \
 ./device.d \
 ./gpio.d \
 ./lcd.d \
