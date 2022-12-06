@@ -14,7 +14,6 @@
 
 int main(void)
 {
-	unsigned char temperature = 0;
 	SPI_initMaster();
 
 	GPIO_writePin(PORTB_ID, PIN4_ID, LOGIC_HIGH);
@@ -28,15 +27,8 @@ int main(void)
 	SetPollingTime(500);
 	while(1)
 	{
-		LCD_clearScreen();
 
-
-
-		GPIO_writePin(PORTB_ID, PIN4_ID, LOGIC_HIGH);
-		SPI_sendReceiveByte(0x02);
-		temperature = SPI_sendReceiveByte(SPI_DEFAULT_DATA_VALUE);
-		GPIO_writePin(PORTB_ID, PIN4_ID, LOGIC_LOW);
-		LCD_intgerToString(temperature);
+		Poll();
 		_delay_ms(500);
 
 	}
