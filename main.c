@@ -15,6 +15,8 @@
 
 int main(void)
 {
+	SREG  |= (1<<7);           // Enable global interrupts in MC.
+
 	SPI_initMaster();
 	TC72_Init(CONTINUOUS_MODE);
 	LCD_init();
