@@ -20,8 +20,8 @@ void Poll(void)
 		Handle_data(data);
 
 	}
-//	counter++;
-//	counter = counter%polling_counter;
+	counter++;
+	counter = counter%polling_counter;
 }
 
 void StartPolling(void)
@@ -36,5 +36,5 @@ void StopPolling(void)
 
 void SetPollingTime(int polling_time)
 {
-	polling_counter = polling_time/100;
+	polling_counter = polling_time/250;
 }
