@@ -62,7 +62,7 @@ typedef struct
 {
 	unsigned char port_id;
 	unsigned char pin_num;
-	unsigned char direction;
+	GPIO_PinDirectionType direction;
 }DIO_channel_config;
 
 
