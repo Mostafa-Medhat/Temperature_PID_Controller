@@ -1,5 +1,13 @@
 #include "PID.h"
 
+
+PIDController pid =
+	{
+	PID_KP, PID_KI, PID_KD,
+	PID_LIM_MIN, PID_LIM_MAX,
+	PID_LIM_MIN_INT, PID_LIM_MAX_INT
+	};
+
 void PIDController_Init(PIDController *pid) {
 
 	/* Clear controller variables */
