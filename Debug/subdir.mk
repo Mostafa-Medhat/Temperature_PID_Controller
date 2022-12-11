@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../DIO_config.c \
+../PID.c \
 ../PollingDataClient.c \
 ../TC72.c \
 ../TimerCompareMode.c \
@@ -18,6 +19,7 @@ C_SRCS += \
 
 OBJS += \
 ./DIO_config.o \
+./PID.o \
 ./PollingDataClient.o \
 ./TC72.o \
 ./TimerCompareMode.o \
@@ -31,6 +33,7 @@ OBJS += \
 
 C_DEPS += \
 ./DIO_config.d \
+./PID.d \
 ./PollingDataClient.d \
 ./TC72.d \
 ./TimerCompareMode.d \
