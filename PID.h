@@ -41,6 +41,8 @@ typedef struct {
 
 #define SET_POINT	30
 
+extern PIDController pid;
+
 void  PIDController_Init(PIDController *pid);
 float PIDController_Update(PIDController *pid, float setpoint, float measurement);
 

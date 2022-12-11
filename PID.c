@@ -1,5 +1,5 @@
 #include "PID.h"
-
+#include <stdint.h>
 
 PIDController pid =
 	{
