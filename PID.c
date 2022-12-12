@@ -1,19 +1,15 @@
 #include "PID.h"
 
-PIDController pid = { PID_KP, PID_KI, PID_KD,
-                          PID_TAU,
-                          PID_LIM_MIN, PID_LIM_MAX,
-			              PID_LIM_MIN_INT, PID_LIM_MAX_INT,
-                          SAMPLE_TIME_S };
+PIDController pid = { PID_KP, PID_KI, PID_KD};
 
 void PIDController_Init(PIDController *pid) {
 
 	/* Clear controller variables */
 	pid->integrator = 0.0f;
+
 	pid->prevError  = 0.0f;
 
 	pid->differentiator  = 0.0f;
-	pid->prevMeasurement = 0.0f;
 
 	pid->out = 0.0f;
 
@@ -36,27 +32,14 @@ float PIDController_Update(PIDController *pid, float setpoint, float measurement
 	/*
 	* Integral
 	*/
-    pid->integrator = pid->integrator + 0.5f * pid->Ki * pid->T * (error + pid->prevError);
-
-	/* Anti-wind-up via integrator clamping */
-    if (pid->integrator > pid->limMaxInt) {
-
-        pid->integrator = pid->limMaxInt;
-
-    } else if (pid->integrator < pid->limMinInt) {
-
-        pid->integrator = pid->limMinInt;
-
-    }
+    pid->integrator = pid->integrator + error ;
 
 
 	/*
-	* Derivative (band-limited differentiator)
+	* Derivative
 	*/
 		
-    pid->differentiator = -(2.0f * pid->Kd * (measurement - pid->prevMeasurement)	/* Note: derivative on measurement, therefore minus sign in front of equation! */
-                        + (2.0f * pid->tau - pid->T) * pid->differentiator)
-                        / (2.0f * pid->tau + pid->T);
+    pid->differentiator = error - pid->prevError;
 
 
 	/*
@@ -64,19 +47,19 @@ float PIDController_Update(PIDController *pid, float setpoint, float measurement
 	*/
     pid->out = proportional + pid->integrator + pid->differentiator;
 
-    if (pid->out > pid->limMax) {
-
-        pid->out = pid->limMax;
-
-    } else if (pid->out < pid->limMin) {
-
-        pid->out = pid->limMin;
-
-    }
-
+    
 	/* Store error and measurement for later use */
-    pid->prevError       = error;
-    pid->prevMeasurement = measurement;
+    pid->prevError       = error; // update prevError
+
+
+	if( (pid->out/255) > PWM_MAX)
+	{
+		pid->out = 255 * PWM_MAX;
+	} 
+	else if( (pid->out/255) < PWM_MIN)
+	{
+		pid->out = 255 * PWM_MIN;
+	} 
 
 	/* Return controller output */
     return pid->out;

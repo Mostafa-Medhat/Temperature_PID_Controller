@@ -32,12 +32,12 @@ void Handle_data(signed char data)
 			LCD_displayCharacter(' ');
 		}
 	}
-	float feedbackSignal = PIDController_Update(&pid, SET_POINT, data);
-	if(feedbackSignal < 0)
-	{
-		feedbackSignal = -feedbackSignal;
-	}
-	uint8 duty_cycle= (uint8)((feedbackSignal/100.0)*255);
+	float duty_cycle = PIDController_Update(&pid, SET_POINT, data);
+	// if(feedbackSignal < 0)
+	// {
+	// 	feedbackSignal = -feedbackSignal;
+	// }
+	// uint8 duty_cycle= (uint8)((feedbackSignal/100.0)*255);
 	PWM_Timer0_Start(duty_cycle);
 
 }
