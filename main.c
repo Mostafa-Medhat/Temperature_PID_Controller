@@ -29,6 +29,7 @@ int main(void)
 
 	SetPollingTime(500);
 	Timer2_Init_CTC_Mode(250);
+
 	while(1)
 	{
 
