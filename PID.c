@@ -45,7 +45,7 @@ float PIDController_Update(PIDController *pid, float setpoint, float measurement
 	/*
 	* Compute output and apply limits
 	*/
-    pid->out = proportional + pid->integrator + pid->differentiator;
+    pid->out = proportional + (pid->Ki*pid->integrator) + pid->differentiator;
 
     
 	/* Store error and measurement for later use */
