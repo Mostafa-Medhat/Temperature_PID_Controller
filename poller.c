@@ -15,7 +15,7 @@ void Poll(void)
 {
 	if(polling_enabled && (!counter))
 	{
-		unsigned char data;
+		signed char data = 0;
 		data = Get_Data();
 		Handle_data(data);
 
