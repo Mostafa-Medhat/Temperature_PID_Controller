@@ -1,18 +1,17 @@
 #include "PID.h"
-#include <stdint.h>
 
-PIDController pid =
-	{
-	PID_KP, PID_KI, PID_KD,
-	PID_LIM_MIN, PID_LIM_MAX,
-	PID_LIM_MIN_INT, PID_LIM_MAX_INT
-	};
+PIDController pid = { PID_KP, PID_KI, PID_KD,
+                          PID_TAU,
+                          PID_LIM_MIN, PID_LIM_MAX,
+			              PID_LIM_MIN_INT, PID_LIM_MAX_INT,
+                          SAMPLE_TIME_S };
 
 void PIDController_Init(PIDController *pid) {
 
 	/* Clear controller variables */
 	pid->integrator = 0.0f;
-	pid->sumError = 0.0f;
+	pid->prevError  = 0.0f;
+
 	pid->differentiator  = 0.0f;
 	pid->prevMeasurement = 0.0f;
 
@@ -20,9 +19,7 @@ void PIDController_Init(PIDController *pid) {
 
 }
 
-float PIDController_Update(PIDController *pid, float setpoint, float measurement)
-{
-	int32_t temp;
+float PIDController_Update(PIDController *pid, float setpoint, float measurement) {
 
 	/*
 	* Error signal
@@ -39,29 +36,27 @@ float PIDController_Update(PIDController *pid, float setpoint, float measurement
 	/*
 	* Integral
 	*/
-    temp = pid->sumError + error;
+    pid->integrator = pid->integrator + 0.5f * pid->Ki * pid->T * (error + pid->prevError);
 
 	/* Anti-wind-up via integrator clamping */
-    if (temp > pid->limMaxInt)
-    {
+    if (pid->integrator > pid->limMaxInt) {
+
         pid->integrator = pid->limMaxInt;
-    }
-    else if (temp < pid->limMinInt)
-    {
+
+    } else if (pid->integrator < pid->limMinInt) {
+
         pid->integrator = pid->limMinInt;
-    }
-    else
-    {
-    	pid->sumError = temp;
-        pid->integrator = pid->Ki * pid->sumError;
+
     }
 
 
 	/*
-	* Derivative
+	* Derivative (band-limited differentiator)
 	*/
 		
-    pid->differentiator = pid->Kd * (measurement - pid->prevMeasurement);
+    pid->differentiator = -(2.0f * pid->Kd * (measurement - pid->prevMeasurement)	/* Note: derivative on measurement, therefore minus sign in front of equation! */
+                        + (2.0f * pid->tau - pid->T) * pid->differentiator)
+                        / (2.0f * pid->tau + pid->T);
 
 
 	/*
@@ -80,6 +75,7 @@ float PIDController_Update(PIDController *pid, float setpoint, float measurement
     }
 
 	/* Store error and measurement for later use */
+    pid->prevError       = error;
     pid->prevMeasurement = measurement;
 
 	/* Return controller output */
