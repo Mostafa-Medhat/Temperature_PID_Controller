@@ -3,8 +3,8 @@
 
 
 /* Controller parameters */
-#define PID_KP  0.1f
-#define PID_KI  0.01f
+#define PID_KP  0.9f
+#define PID_KI  0.1f
 #define PID_KD  0.0f
 
 #define SET_POINT	30
