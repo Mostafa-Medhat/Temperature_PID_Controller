@@ -7,7 +7,7 @@
 #include "TC72.h"
 unsigned char data;
 
-unsigned char Get_Data(void)
+signed char Get_Data(void)
 {
 	data = TC72_ReadTemp();
 	return data;

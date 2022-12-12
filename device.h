@@ -10,6 +10,6 @@
 
 #define MSB_ADDRESS		0x02
 
-unsigned char Get_Data();
+signed char Get_Data();
 
 #endif /* INC_DEVICE_H_ */
