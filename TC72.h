@@ -13,7 +13,7 @@
 
 void TC72_Init(unsigned char mode);
 
-unsigned char TC72_ReadTemp(void);
+signed char TC72_ReadTemp(void);
 
 
 #endif /* TC72_H_ */
